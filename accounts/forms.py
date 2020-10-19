@@ -29,4 +29,4 @@ class UserPictureForm(forms.ModelForm):
         model = Profile
         fields = (
             'picture',
-            )
+        )
