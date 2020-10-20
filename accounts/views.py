@@ -15,15 +15,18 @@ def signup(request):
                 request.POST,
                 instance=user.profile)
 
-            if picture_form.is_valid():
-                picture_form.save()
-                context = {
-                    'user': user
-                }
-                return render(
-                    request,
-                    'registration/signup-success.html',
-                    context)
+        if picture_form.is_valid():
+            picture_form.save()
+        else:
+            print('Picture is not valid')
+                
+        context = {
+            'user': user
+        }
+        return render(
+            request,
+            'registration/signup-success.html',
+            context)
     else:
         user_form = SignUpForm()
         picture_form = UserPictureForm()
