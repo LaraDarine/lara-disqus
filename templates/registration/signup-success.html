@@ -7,7 +7,7 @@
         <div>
             <h1">Cool {{ user.username  | capfirst }}!</h1>
             <div>Confirmation email sent to {{ user.email }}, check it out!</div>
-            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'login' %}">Home</a>
         </div>
     </section>
 {% endblock %}
