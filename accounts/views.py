@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http.response import HttpResponseBadRequest
 from django.contrib.auth.models import User
 from .forms import SignUpForm, UserPictureForm
+from .utils import send_email_confirmation
 
 
 def signup(request):
@@ -17,8 +18,9 @@ def signup(request):
                 instance=user.profile)
 
         if picture_form.is_valid():
+            send_email_confirmation(request, user)
             picture_form.save()
-                
+
         context = {
             'user': user
         }
@@ -29,7 +31,7 @@ def signup(request):
     else:
         user_form = SignUpForm()
         picture_form = UserPictureForm()
-        
+
     context = {
         'user_form': user_form,
         'picture_form': picture_form,
