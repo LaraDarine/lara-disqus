@@ -3,6 +3,7 @@ from django.http.response import HttpResponseBadRequest
 from django.contrib.auth.models import User
 from .forms import SignUpForm, UserPictureForm
 from .utils import send_email_confirmation
+from .tokens import token_generator
 
 
 def signup(request):
@@ -11,6 +12,7 @@ def signup(request):
 
         if user_form.is_valid():
             user = user_form.save()
+            user.is_active = False
             user.save()
             picture_form = UserPictureForm(
                 request.POST,
@@ -43,3 +45,14 @@ def signup(request):
         }
     }
     return render(request, 'registration/signup.html', context)
+
+
+def activate_email(request, user_id, token):
+    user = get_object_or_404(User, pk=user_id)
+
+    if token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+        return redirect('login')
+    else:
+        return HttpResponseBadRequest('Bad token')
