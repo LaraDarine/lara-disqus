@@ -13,12 +13,11 @@ def signup(request):
             user.save()
             picture_form = UserPictureForm(
                 request.POST,
+                request.FILES,
                 instance=user.profile)
 
         if picture_form.is_valid():
             picture_form.save()
-        else:
-            print('Picture is not valid')
                 
         context = {
             'user': user
