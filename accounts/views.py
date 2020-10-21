@@ -56,3 +56,10 @@ def activate_email(request, user_id, token):
         return redirect('login')
     else:
         return HttpResponseBadRequest('Bad token')
+
+
+def profile(request):
+    context = {
+        'current_user': request.user
+    }
+    return render(request, 'profile/profile.html', context)
