@@ -1,4 +1,5 @@
 {% for discussion in discussions %}
     <a href="#">{{ discussion.topic.title }}</a>
     <p>{{ discussion.content }}</p>
+    <p>By <span>{{ discussion.author.username }}</span></p>
 {% endfor %}
