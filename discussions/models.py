@@ -14,7 +14,7 @@ class Discussion(models.Model):
         User,
         related_name='author',
         on_delete=models.CASCADE)
-    content = models.CharField(max_length=500)
+    content = models.CharField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(
         upload_to='discussions/',
