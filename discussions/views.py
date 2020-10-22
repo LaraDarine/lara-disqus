@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from .models import Discussion
 from .forms import DiscussionForm
 
@@ -22,4 +22,4 @@ def toggle_like(request, pk):
             discussion.likes.remove(current_user.id)
         else:
             discussion.likes.add(current_user.id)
-        return redirect('discussions')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
