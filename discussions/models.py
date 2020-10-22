@@ -33,7 +33,3 @@ class Discussion(models.Model):
     def __str__(self):
         return f'{self.author.username}-{self.topic.title}-{self.created_at}'
 
-    def get_comments(self):
-        from comments.models import Comment
-        comments = Comment.objects.filter(post=self)
-        return comments
