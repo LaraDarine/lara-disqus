@@ -10,3 +10,8 @@ class Topic(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def get_discussions(self):
+        from discussions.models import Discussion
+        discussions = Discussion.objects.filter(topic=self)
+        return discussions
