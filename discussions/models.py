@@ -33,3 +33,8 @@ class Discussion(models.Model):
     def __str__(self):
         return f'{self.author.username}-{self.topic.title}-{self.created_at}'
 
+    def likes_count(self):
+        return self.likes.count()
+
+    def dislikes_count(self):
+        return self.dislikes.count()
