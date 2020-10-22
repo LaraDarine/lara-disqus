@@ -2,8 +2,8 @@
     <a href="#">{{ discussion.topic.title }}</a>
     <p>{{ discussion.content }}</p>
     <p>By <span>{{ discussion.author.username }}</span></p>
-    <p>
-        Likes <span>{{ discussion.likes_count }}</span> 
+    <div>
+        <a href="{% url 'toggle_like' pk=discussion.id %}">Likes <span>{{ discussion.likes_count }}</span></a>
         Dislikes <span>{{ discussion.dislikes_count }}</span>
-    </p>
+    </div>
 {% endfor %}
