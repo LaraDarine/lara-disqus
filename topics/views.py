@@ -3,7 +3,7 @@ from .models import Topic
 
 
 def topics(request):
-    topics = Topic.objects.all().order_by('topic')
+    topics = Topic.objects.all()
 
     context = {
         'topics': topics
