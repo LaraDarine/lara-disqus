@@ -2,4 +2,8 @@
     <a href="#">{{ discussion.topic.title }}</a>
     <p>{{ discussion.content }}</p>
     <p>By <span>{{ discussion.author.username }}</span></p>
+    <p>
+        Likes <span>{{ discussion.likes_count }}</span> 
+        Dislikes <span>{{ discussion.dislikes_count }}</span>
+    </p>
 {% endfor %}
