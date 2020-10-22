@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Discussion
 from .forms import DiscussionForm
 
@@ -11,3 +11,15 @@ def discussions(request):
     }
 
     return render(request, 'discussions/discussions.html', context)
+
+def toggle_like(request, pk):
+    current_user = request.user
+    if current_user.is_authenticated:
+        discussion = get_object_or_404(Discussion, pk=pk)
+        print(discussion.likes)
+        
+        if discussion.likes.filter(id=current_user.id).exists():
+            discussion.likes.remove(current_user.id)
+        else:
+            discussion.likes.add(current_user.id)
+        return redirect('discussions')
