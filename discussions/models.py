@@ -19,6 +19,16 @@ class Discussion(models.Model):
     image = models.ImageField(
         upload_to='discussions/',
         default='discussions/discussion.png')
+    likes = models.ManyToManyField(
+        User,
+        related_name='likes',
+        blank=True
+        )
+    dislikes = models.ManyToManyField(
+        User,
+        related_name='dislikes',
+        blank=True
+        )
 
     def __str__(self):
         return f'{self.author.username}-{self.topic.title}-{self.created_at}'
