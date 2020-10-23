@@ -7,7 +7,8 @@ def discussions(request):
     discussions = Discussion.objects.all().order_by('topic')
 
     context = {
-        'discussions': discussions
+        'discussions': discussions,
+        'current_user': request.user
     }
 
     return render(request, 'discussions/discussions.html', context)
@@ -23,6 +24,8 @@ def toggle_like(request, pk):
             discussion.likes.remove(current_user.id)
         else:
             discussion.likes.add(current_user.id)
+            if discussion.dislikes.filter(id=current_user.id).exists():
+                discussion.dislikes.remove(current_user.id)
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 def toggle_dislike(request, pk):
@@ -35,4 +38,7 @@ def toggle_dislike(request, pk):
             discussion.dislikes.remove(current_user.id)
         else:
             discussion.dislikes.add(current_user.id)
+            if discussion.likes.filter(id=current_user.id).exists():
+                discussion.likes.remove(current_user.id)
+
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
