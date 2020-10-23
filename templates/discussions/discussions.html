@@ -3,7 +3,25 @@
     <p>{{ discussion.content }}</p>
     <p>By <span>{{ discussion.author.username }}</span></p>
     <div>
-        <a href="{% url 'toggle_like' pk=discussion.id %}">Likes <span>{{ discussion.likes_count }}</span></a>
-        <a href="{% url 'toggle_dislike' pk=discussion.id %}">Dislikes <span>{{ discussion.dislikes_count }}</span></a>
+        {% if current_user in discussion.likes.all %}
+            <a class="" href="{% url 'toggle_like' pk=discussion.id %}">
+                    liked
+            </a>
+            {% else %}    
+            <a class="" href="{% url 'toggle_like' pk=discussion.id %}">
+                    like
+            </a>
+            {% endif %}
+            <span>{{ discussion.likes_count }}</span>
+        {% if current_user in discussion.dislikes.all %}
+            <a class="" href="{% url 'toggle_dislike' pk=discussion.id %}">
+                    disliked
+            </a>
+            {% else %}    
+            <a class="" href="{% url 'toggle_dislike' pk=discussion.id %}">
+                    dislike
+            </a>
+            {% endif %}
+            <span>{{ discussion.dislikes_count }}</span>
     </div>
 {% endfor %}
