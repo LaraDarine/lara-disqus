@@ -1,38 +1,50 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    
-    {% for discussion in discussions %}
-        <div class="discussion">
-            <a href="#">{{ discussion.topic.title }}</a>
-            <p>{{ discussion.content }}</p>
-            <p>By <span>{{ discussion.author.username }}</span></p>
-            <div>
-                {% if current_user in discussion.likes.all %}
-                    <a class="like" href="{% url 'toggle_like' pk=discussion.id %}">
-                            liked
+    <div class="container">
+        {% for discussion in discussions %}
+            <div class="discussion">
+                <a href="{% url 'discussion_details' pk=discussion.id %}">{{ discussion.topic.title }}</a>
+                <div>
+                    <a href="{% url 'discussion_details' pk=discussion.id %}">
+                        <img src="{{ discussion.image.url }}" alt="discussion.id">
                     </a>
-                    {% else %}    
-                    <a class="gray" href="{% url 'toggle_like' pk=discussion.id %}">
-                            like
-                    </a>
-                    {% endif %}
-                    <span>{{ discussion.likes_count }}</span>
-                {% if current_user in discussion.dislikes.all %}
-                    <a class="dislike" href="{% url 'toggle_dislike' pk=discussion.id %}">
-                            disliked
-                    </a>
-                    {% else %}    
-                    <a class="gray" href="{% url 'toggle_dislike' pk=discussion.id %}">
-                            dislike
-                    </a>
-                    {% endif %}
-                    <span>{{ discussion.dislikes_count }}</span>
+                </div>
+                <p>{{ discussion.content }}</p>
+                <p>By <span>{{ discussion.author.username }}</span></p>
+                <div>
+                    {% if current_user in discussion.likes.all %}
+                        <a class="like" href="{% url 'toggle_like' pk=discussion.id %}">
+                                liked
+                        </a>
+                        {% else %}    
+                        <a class="gray" href="{% url 'toggle_like' pk=discussion.id %}">
+                                like
+                        </a>
+                        {% endif %}
+                        <span>{{ discussion.likes_count }}</span>
+                    {% if current_user in discussion.dislikes.all %}
+                        <a class="dislike" href="{% url 'toggle_dislike' pk=discussion.id %}">
+                                disliked
+                        </a>
+                        {% else %}    
+                        <a class="gray" href="{% url 'toggle_dislike' pk=discussion.id %}">
+                                dislike
+                        </a>
+                        {% endif %}
+                        <span>{{ discussion.dislikes_count }}</span>
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 
     <style>
+        .container {
+            display: flex;
+        }
+        img {
+            width: 250px;
+        }
         .discussion {
             padding: 32px;
             margin: 4px auto;
