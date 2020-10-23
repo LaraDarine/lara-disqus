@@ -7,13 +7,15 @@ from .models import Comment
 User = get_user_model()
 
 
-class CommentForm(UserCreationForm):
+class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
         fields = (
-            'discussion',
             'content',
-            'likes',
-            'dislikes'
         )
+    
+    def add_comment(self, user, discussion):
+        self.instance.author = user
+        self.instance.discussion = discussion
+        self.instance.save()
