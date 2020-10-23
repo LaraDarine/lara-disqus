@@ -29,8 +29,7 @@ def discussion_details(request, pk):
                     'comment_form': comment_form
                 }
                 return render(request, 'discussions/discussion-details.html', context)
-            else:
-                pass
+
     comment_form = CommentForm()
     context = {
         'discussion': discussion,
