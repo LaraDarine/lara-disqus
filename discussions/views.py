@@ -12,6 +12,7 @@ def discussions(request):
 
     return render(request, 'discussions/discussions.html', context)
 
+#TODO: Make this view func globally
 def toggle_like(request, pk):
     current_user = request.user
     if current_user.is_authenticated:
@@ -22,4 +23,16 @@ def toggle_like(request, pk):
             discussion.likes.remove(current_user.id)
         else:
             discussion.likes.add(current_user.id)
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+def toggle_dislike(request, pk):
+    current_user = request.user
+    if current_user.is_authenticated:
+        discussion = get_object_or_404(Discussion, pk=pk)
+        print(discussion.dislikes)
+        
+        if discussion.dislikes.filter(id=current_user.id).exists():
+            discussion.dislikes.remove(current_user.id)
+        else:
+            discussion.dislikes.add(current_user.id)
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
