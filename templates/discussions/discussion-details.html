@@ -34,7 +34,7 @@
         <ul>
             {% for comment in discussion.get_comments %}
                 <li>
-                    <div>{{ comment.content }}</div>
+                    <div><strong>{{ comment.author.username }}: </strong>{{ comment.content }}</div>
                     <div>
                         {% if current_user in comment.likes.all %}
                             <a class="like" href="{% url 'toggle_comment_like' pk=comment.id %}">
@@ -60,5 +60,13 @@
                 </li>
             {% endfor %}
         </ul>
+        <div id="new-comment">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <input type="submit" value=">>">
+            </form>
+
+        </div>
     </div>
 {% endblock %}
