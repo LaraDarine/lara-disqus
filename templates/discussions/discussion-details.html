@@ -30,4 +30,35 @@
                 <span>{{ discussion.dislikes_count }}</span>
         </div>
     </div>
+    <div class="">
+        <ul>
+            {% for comment in discussion.get_comments %}
+                <li>
+                    <div>{{ comment.content }}</div>
+                    <div>
+                        {% if current_user in comment.likes.all %}
+                            <a class="like" href="{% url 'toggle_comment_like' pk=comment.id %}">
+                                    liked
+                            </a>
+                            {% else %}    
+                            <a class="gray" href="{% url 'toggle_comment_like' pk=comment.id %}">
+                                    like
+                            </a>
+                            {% endif %}
+                            <span>{{ comment.likes_count }}</span>
+                        {% if current_user in comment.dislikes.all %}
+                            <a class="dislike" href="{% url 'toggle_comment_dislike' pk=comment.id %}">
+                                    disliked
+                            </a>
+                            {% else %}    
+                            <a class="gray" href="{% url 'toggle_comment_dislike' pk=comment.id %}">
+                                    dislike
+                            </a>
+                            {% endif %}
+                            <span>{{ comment.dislikes_count }}</span>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
