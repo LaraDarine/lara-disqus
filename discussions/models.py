@@ -38,3 +38,8 @@ class Discussion(models.Model):
 
     def dislikes_count(self):
         return self.dislikes.count()
+
+    def get_comments(self):
+        from comments.models import Comment
+        comments = Comment.objects.filter(discussion=self)
+        return comments
