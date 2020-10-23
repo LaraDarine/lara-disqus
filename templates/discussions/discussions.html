@@ -4,6 +4,6 @@
     <p>By <span>{{ discussion.author.username }}</span></p>
     <div>
         <a href="{% url 'toggle_like' pk=discussion.id %}">Likes <span>{{ discussion.likes_count }}</span></a>
-        Dislikes <span>{{ discussion.dislikes_count }}</span>
+        <a href="{% url 'toggle_dislike' pk=discussion.id %}">Dislikes <span>{{ discussion.dislikes_count }}</span></a>
     </div>
 {% endfor %}
