@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'topics',
     'discussions',
     'comments',
+    'replies',
 ]
 
 MIDDLEWARE = [
