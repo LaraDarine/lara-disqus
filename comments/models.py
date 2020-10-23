@@ -39,3 +39,8 @@ class Comment(models.Model):
 
     def dislikes_count(self):
         return self.dislikes.count()
+    
+    def get_replies(self):
+        from replies.models import Reply
+        replies = Reply.objects.filter(comment=self)
+        return replies
