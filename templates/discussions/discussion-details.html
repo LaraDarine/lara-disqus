@@ -57,6 +57,13 @@
                             {% endif %}
                             <span>{{ comment.dislikes_count }}</span>
                     </div>
+                    <div>
+                        <ul>
+                            {% for reply in comment.get_replies %}
+                                <li>{{ reply.content }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </li>
             {% endfor %}
         </ul>
