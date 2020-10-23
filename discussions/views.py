@@ -13,6 +13,16 @@ def discussions(request):
 
     return render(request, 'discussions/discussions.html', context)
 
+def discussion_details(request, pk):
+    discussion = get_object_or_404(Discussion, pk=pk)
+
+    context = {
+        'discussion': discussion,
+        'current_user': request.user
+    }
+
+    return render(request, 'discussions/discussion-details.html', context)
+
 #TODO: Make this view func globally
 def toggle_like(request, pk):
     current_user = request.user
