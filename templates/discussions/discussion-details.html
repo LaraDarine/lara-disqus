@@ -58,6 +58,38 @@
                             <span>{{ comment.dislikes_count }}</span>
                     </div>
                 </li>
+                {% if comment.replies.all %}
+                    <ul>
+                        {% for reply in comment.replies.all %}
+                            <li>
+                                <div><strong>{{ reply.author.username }}: </strong>{{ reply.content }}</div>
+                                <div>
+                                    {% if current_user in reply.likes.all %}
+                                        <a class="like" href="{% url 'toggle_comment_like' pk=reply.id %}">
+                                                liked
+                                        </a>
+                                        {% else %}    
+                                        <a class="gray" href="{% url 'toggle_comment_like' pk=reply.id %}">
+                                                like
+                                        </a>
+                                        {% endif %}
+                                        <span>{{ reply.likes_count }}</span>
+                                    {% if current_user in reply.dislikes.all %}
+                                        <a class="dislike" href="{% url 'toggle_comment_dislike' pk=reply.id %}">
+                                                disliked
+                                        </a>
+                                        {% else %}    
+                                        <a class="gray" href="{% url 'toggle_comment_dislike' pk=reply.id %}">
+                                                dislike
+                                        </a>
+                                        {% endif %}
+                                        <span>{{ reply.dislikes_count }}</span>
+                                </div>
+                            </li>
+
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             {% endfor %}
         </ul>
         <div id="new-comment">
