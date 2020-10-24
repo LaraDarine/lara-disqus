@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 
 def home(request):
-    return redirect('discussions')
+    return redirect('home')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
