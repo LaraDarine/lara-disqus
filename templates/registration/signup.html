@@ -1,23 +1,36 @@
+
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+
 {% block title %}{{ text.title }}{% endblock %}
 
 {% block content %}
-    <section>
-        <h2>{{ text.title }}</h2>
-        <div>
-            {{ text.description }}
-        </div>
-        <div>
-            <form action="" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ user_form | crispy}}
-                {{ picture_form | crispy }}
-                <input type="submit" value="{{ text.action }}">
-            </form>
-            <div>
-                <a href="{% url 'login' %}">Already have an account?</a>
+<section class='container mx-auto my-4' style="max-width: 680px">
+    <div class="card mb-3" >
+        <div class="row no-gutters">
+            <div class="col-md-12">
+                <img src="/static/images/welcome.png" class="card-img" alt="welcome">
+            </div>
+            <div class="col-md-12">
+                <div class="card-body">
+                    <h5 class="card-title">{{ text.title }}</h5>
+                    <div class="card-text">
+                        <div class="">{{ text.description }}</div>
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ user_form | crispy}}
+                            {{ picture_form | crispy }}
+                            <div class="float float-right">
+                                <input class="btn btn-primary float-left" type="submit" value="signup">
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+                        <a href="{% url 'login' %}" class="card-link">Already have an account?</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock %}

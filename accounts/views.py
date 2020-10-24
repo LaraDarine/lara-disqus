@@ -40,8 +40,8 @@ def signup(request):
         'text': {
             'title': 'Happy to have you among us!',
             'action': 'Register',
-            'description': '''Please, take a moment and fill
-             in this form to create your account.'''
+            'description': '''Please, fill
+             this form to join us.'''
         }
     }
     return render(request, 'registration/signup.html', context)
