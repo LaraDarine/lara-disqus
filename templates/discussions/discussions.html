@@ -24,7 +24,7 @@
                             like
                         </a>
                         {% endif %}
-                        <span>{{ discussion.likes_count }}</span>
+                        <span class="badge badge-primary">{{ discussion.likes_count }}</span>
                         {% if current_user in discussion.dislikes.all %}
                         <a class="dislike" href="{% url 'toggle_dislike' pk=discussion.id %}">
                             disliked
@@ -34,12 +34,12 @@
                             dislike
                         </a>
                         {% endif %}
-                        <span>{{ discussion.dislikes_count }}</span>
+                        <span class="badge badge-danger">{{ discussion.dislikes_count }}</span>
                     </div>
                     <div class="float-right">
                         <div>
                             {{ discussion.author.username | capfirst }}
-                            <small class="text-muted">{{ discussion.created_at }}</small>
+                            <small class="text-muted">{{ discussion.created_at |date:'m-d H:i'  }}</small>
                         </div>
                     </div>
                 </div>
