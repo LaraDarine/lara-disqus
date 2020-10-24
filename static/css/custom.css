@@ -29,10 +29,6 @@ body {
     display: flex;
 }
 
-header {
-    background-color: #f7edf7;
-}
-
 img {
     width: 250px;
 }
