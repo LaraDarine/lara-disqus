@@ -60,9 +60,41 @@
                     <div>
                         <ul>
                             {% for reply in comment.get_replies %}
-                                <li>{{ reply.content }}</li>
+                                <li>
+                                    <div><strong>{{ reply.author.username }}: </strong>{{ reply.content }}</div>
+                                    <div>
+                                        {% if current_user in reply.likes.all %}
+                                            <a class="like" href="{% url 'toggle_reply_like' pk=reply.id %}">
+                                                    liked
+                                            </a>
+                                            {% else %}    
+                                            <a class="gray" href="{% url 'toggle_reply_like' pk=reply.id %}">
+                                                    like
+                                            </a>
+                                            {% endif %}
+                                            <span>{{ reply.likes_count }}</span>
+                                        {% if current_user in reply.dislikes.all %}
+                                            <a class="dislike" href="{% url 'toggle_reply_dislike' pk=reply.id %}">
+                                                    disliked
+                                            </a>
+                                            {% else %}    
+                                            <a class="gray" href="{% url 'toggle_reply_dislike' pk=reply.id %}">
+                                                    dislike
+                                            </a>
+                                            {% endif %}
+                                            <span>{{ reply.dislikes_count }}</span>
+                                    </div>
+                                </li>
                             {% endfor %}
                         </ul>
+                        <div id="new-reply">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ reply_form.as_p }}
+                                <input type="submit" value=">>">
+                            </form>
+
+                        </div>
                     </div>
                 </li>
             {% endfor %}

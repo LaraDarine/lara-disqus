@@ -15,7 +15,7 @@ class ReplyForm(forms.ModelForm):
             'content',
         )
     
-    def add_comment(self, user, comment):
+    def add_reply(self, user, comment):
         self.instance.author = user
         self.instance.comment = comment
         self.instance.save()

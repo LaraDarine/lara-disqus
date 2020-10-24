@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRe
 from .models import Discussion
 from .forms import DiscussionForm
 from comments.forms import CommentForm
-
+from replies.forms import ReplyForm
 
 def discussions(request):
     discussions = Discussion.objects.all().order_by('topic')
@@ -27,6 +27,17 @@ def discussion_details(request, pk):
                     'discussion': discussion,
                     'current_user': request.user,
                     'comment_form': comment_form
+                }
+                return render(request, 'discussions/discussion-details.html', context)
+                
+            reply_form = ReplyForm(request.POST)
+            print(reply_form.is_valid())
+            if reply_form.is_valid():
+                reply_form.add_reply(current_user, comment)
+                context = {
+                    'discussion': discussion,
+                    'current_user': request.user,
+                    'reply_form': reply_form
                 }
                 return render(request, 'discussions/discussion-details.html', context)
 
