@@ -25,10 +25,19 @@ body {
     margin: 0;
     padding: 0;
 }
-.container {
-    display: flex;
+
+/* Welcome styles */
+#welcome {
+    position: absolute;
+    top: 0;
+    background: url('/static/images/welcome.png');
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    z-index: -1;
 }
 
+/* Disscusions styles */
 img {
     width: 250px;
 }
@@ -40,17 +49,6 @@ img {
 
 a {
     text-decoration: none;
-}
-
-/* Welcome styles */
-#welcome {
-    position: absolute;
-    top: 0;
-    background: url('/static/images/welcome.png');
-    background-size: cover;
-    height: 100vh;
-    width: 100%;
-    z-index: -1;
 }
 
 .gray {
