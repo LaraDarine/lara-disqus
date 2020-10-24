@@ -16,6 +16,12 @@ class Comment(models.Model):
         on_delete=models.CASCADE)
     content = models.CharField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)
+    parent = models.ForeignKey(
+        'self',
+        related_name='replies',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True)
     image = models.ImageField(
         upload_to='comments/',
         blank=True
