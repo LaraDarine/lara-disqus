@@ -1,12 +1,13 @@
-.btn-primary {
+.btn-primary, .btn-secondary:hover {
     background-color: #7f5da9;
     border-color: #7f5da9;
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-secondary {
     background-color: #e4609b;
     border-color: #e4609b;
 }
+
 
 .text-secondary, a .text-secondary{
     color: #e4609b !important;
@@ -24,6 +25,7 @@
 .btn {
     border-radius: 1.5em;
     min-width: 108px;
+    min-height: 41px;
 }
 
 body {
@@ -40,6 +42,13 @@ body {
     height: 100vh;
     width: 100%;
     z-index: -1;
+}
+
+#welcome-card {
+    background-color: transparent;
+    border: none;
+    width: 570px;
+    max-width: 50%;
 }
 
 /* Header style */
