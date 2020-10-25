@@ -42,23 +42,13 @@ def discussion_details(request, pk):
                     if parent_comment:
                         reply_form = comment_form.save(commit=False)
                         reply_form.parent = parent_comment
+                        reply_form = CommentForm()
                 
                 comment_form.add_comment(current_user, discussion)
                 context = {
                     'discussion': discussion,
                     'current_user': request.user,
                     'comment_form': comment_form
-                }
-                return render(request, 'discussions/discussion-details.html', context)
-                
-            reply_form = ReplyForm(request.POST)
-            print(reply_form.is_valid())
-            if reply_form.is_valid():
-                reply_form.add_reply(current_user, comment)
-                context = {
-                    'discussion': discussion,
-                    'current_user': request.user,
-                    'reply_form': reply_form
                 }
                 return render(request, 'discussions/discussion-details.html', context)
 
