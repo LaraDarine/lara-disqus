@@ -62,6 +62,22 @@ def discussion_details(request, pk):
 
     return render(request, 'discussions/discussion-details.html', context)
 
+def edit_comment(request, pk):
+    if request.user.is_authenticated:
+        comment = get_object_or_404(Comment, pk=pk)
+
+        if request.method == 'POST':
+            comment_form = CommentForm(request.POST, request.FILES, instance=comment)
+
+            if comment_form.is_valid():
+                form.save()
+        else:
+            comment_form = CommentForm(instance=comment)
+
+        return HttpResponseRedirect(request.path_info)
+    else:
+        return redirect('home')
+
 def delete_comment(request, pk):
     if request.user.is_authenticated:
 
