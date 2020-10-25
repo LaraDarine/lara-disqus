@@ -47,6 +47,10 @@ body {
     padding: 1.5rem 1.7rem;
 }
 
+.navbar-nav {
+    padding-left: 120px;;
+}
+
 .nav-link {
     text-transform: uppercase;
     font-weight: bold;
