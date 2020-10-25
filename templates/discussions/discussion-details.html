@@ -144,10 +144,26 @@
                                                 <a href="#" class="btn btn-sm">Reply</a>
                                                 <small class="text-muted">{{ reply.created_at |date:'m-d H:i'  }}</small>
                                             </div>
+                                            <div class="new-reply">
+                                                <form class="form-inline" action="" method="post" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    {{ comment_form | crispy }}
+                                                    <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                                                    <input class="btn btn-sm" type="submit" value="comment">
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                             {% endfor %}
                             <!-- end Reply Section -->
+                            <div class="new-comment">
+                                <form class="form-inline" action="" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{ comment_form | crispy }}
+                                    <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                                    <input class="btn btn-sm" type="submit" value="reply">
+                                </form>
+                            </div>
                         </div>
                         <!-- end Comment Section -->
                         {% endfor %}
