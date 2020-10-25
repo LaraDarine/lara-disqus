@@ -50,7 +50,7 @@ def discussion_details(request, pk):
                     'current_user': request.user,
                     'comment_form': comment_form
                 }
-                return render(request, 'discussions/discussion-details.html', context)
+                return HttpResponseRedirect(request.path_info)
 
     comment_form = CommentForm()
     context = {
