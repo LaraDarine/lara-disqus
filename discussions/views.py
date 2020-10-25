@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
+from django.urls import reverse
 from .models import Discussion
 from .forms import DiscussionForm
 from comments.models import Comment
@@ -60,6 +61,16 @@ def discussion_details(request, pk):
     }
 
     return render(request, 'discussions/discussion-details.html', context)
+
+def delete_comment(request, pk):
+    if request.user.is_authenticated:
+
+        comment = get_object_or_404(Comment, pk=pk)
+        discussion_id = comment.discussion.id
+        comment.delete()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        return redirect('home')
 
 #TODO: Make this view func globally
 def toggle_like(request, pk):
