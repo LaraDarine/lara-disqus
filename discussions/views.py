@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from .models import Discussion
 from .forms import DiscussionForm
+from comments.models import Comment
 from comments.forms import CommentForm
 
 def home(request):
@@ -27,7 +28,21 @@ def discussion_details(request, pk):
     if current_user.is_authenticated:
         if request.method == 'POST':
             comment_form = CommentForm(request.POST)
+
+            parent_comment = None
             if comment_form.is_valid():
+                try:
+                    parent_comment_id = int(request.POST.get('parent_id'))
+                except:
+                    parent_comment_id = None
+
+                if parent_comment_id:
+                    parent_comment = Comment.objects.get(id=parent_comment_id)
+
+                    if parent_comment:
+                        reply_form = comment_form.save(commit=False)
+                        reply_form.parent = parent_comment
+                
                 comment_form.add_comment(current_user, discussion)
                 context = {
                     'discussion': discussion,
