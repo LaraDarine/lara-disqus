@@ -28,7 +28,7 @@ def discussion_details(request, pk):
 
     if current_user.is_authenticated:
         if request.method == 'POST':
-            comment_form = CommentForm(request.POST)
+            comment_form = CommentForm(request.POST, request.FILES)
 
             parent_comment = None
             if comment_form.is_valid():
