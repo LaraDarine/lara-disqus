@@ -13,6 +13,7 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = (
             'content',
+            'image'
         )
     
     def add_comment(self, user, discussion):
