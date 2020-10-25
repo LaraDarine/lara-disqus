@@ -16,7 +16,7 @@
     color: #ab8cd0 !important;
 }
 
-.active a {
+.text-primary, .active a {
     color: #7f5da9 !important;
 }
 
