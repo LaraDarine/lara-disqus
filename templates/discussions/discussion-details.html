@@ -56,7 +56,7 @@
                     </div>
                     <div class="comment-widgets">
                         {% for comment in discussion.get_comments %}
-                        <!-- Comment Row -->
+                        <!-- Comment Section -->
                         <div class="d-flex flex-row">
                             <div class="p-2">
                                 <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583336/AAA/4.jpg"
@@ -100,7 +100,13 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Reply Section -->
+                            {% if comment.is_reply %}
+                                reply of comment
+                            {% endif %}
+                            <!-- end Reply Section -->
                         </div>
+                        <!-- end Comment Section -->
                         {% endfor %}
                     </div>
                 </div>

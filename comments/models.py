@@ -40,8 +40,9 @@ class Comment(models.Model):
     def __str__(self):
         return f'{self.author.username}-{self.created_at}'
     
-    def is_reply(self):
-        return self.parent is not None
+    @property
+    def is_comment(self):
+        return self.parent is None
 
     def likes_count(self):
         return self.likes.count()
