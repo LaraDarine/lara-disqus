@@ -20,6 +20,11 @@
     color: #694c8e !important;
 }
 
+/* Buttons */
+.btn {
+    border-radius: 1.5em;
+    min-width: 108px;
+}
 
 body {
     margin: 0;
