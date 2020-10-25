@@ -104,3 +104,23 @@ a {
 .bold {
     font-weight: 1.2em;
 }
+
+
+@media only screen and (max-width: 600px) {
+    #welcome {
+        background: url('/static/images/welcome-mobile.jpg');
+        background-size: cover;
+        background-position: right;
+    }
+
+    #welcome-card {
+        min-width: 100%;
+        width: 100%;
+        margin-top: auto;
+    }
+
+    #welcome-card .btn {
+        background: linear-gradient(-90deg, rgb(127, 93, 169) , rgb(228, 96, 155)) !important;
+        border: transparent;
+    }
+}
