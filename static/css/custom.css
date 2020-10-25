@@ -17,7 +17,7 @@
 }
 
 .text-primary, .active a {
-    color: #7f5da9 !important;
+    color: #694c8e !important;
 }
 
 
@@ -35,6 +35,19 @@ body {
     height: 100vh;
     width: 100%;
     z-index: -1;
+}
+
+/* Header style */
+.navbar {
+    padding: 1.5rem 1.7rem;
+}
+
+.nav-link {
+    text-transform: uppercase;
+}
+
+.navbar-brand {
+    font-size: 2rem;
 }
 
 /* Disscusions styles */

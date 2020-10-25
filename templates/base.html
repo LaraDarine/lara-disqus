@@ -14,7 +14,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand ml-4 font-weight-bold text-primary" href="{% url 'home' %}">Lara Disqus</a>
+            <a class="navbar-brand ml-4 text-primary" href="{% url 'home' %}">Lara Disqus</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,17 +22,17 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link text-primary" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link text-primary" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Contact</a>
+                        <a class="nav-link text-primary" href="#" tabindex="-1" aria-disabled="true">Contact</a>
                     </li>
                 </ul>
-                <div class="my-2 my-lg-0">
+                <div class="my-2 pr-4 my-lg-0">
                     {% if user.is_authenticated %}
                     <div class="inline">{{ user.username  | capfirst }}</div>
                     
