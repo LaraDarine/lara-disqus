@@ -1,7 +1,43 @@
-.container {
-    display: flex;
+.btn-primary {
+    background-color: #7f5da9;
+    border-color: #7f5da9;
 }
 
+.btn-primary:hover {
+    background-color: #e4609b;
+    border-color: #e4609b;
+}
+
+.text-secondary, a .text-secondary{
+    color: #e4609b !important;
+}
+
+.nav-link {
+    color: #ab8cd0 !important;
+}
+
+.active a {
+    color: #7f5da9 !important;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Welcome styles */
+#welcome {
+    position: absolute;
+    top: 0;
+    background: url('/static/images/welcome.png');
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    z-index: -1;
+}
+
+/* Disscusions styles */
 img {
     width: 250px;
 }

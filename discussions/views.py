@@ -2,7 +2,13 @@ from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRe
 from .models import Discussion
 from .forms import DiscussionForm
 from comments.forms import CommentForm
-from replies.forms import ReplyForm
+
+def home(request):
+    current_user = request.user
+    if current_user.is_authenticated:
+        return redirect(discussions)
+    else:
+        return render(request, 'discussions/welcome.html')
 
 def discussions(request):
     discussions = Discussion.objects.all().order_by('topic')

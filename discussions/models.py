@@ -41,5 +41,6 @@ class Discussion(models.Model):
 
     def get_comments(self):
         from comments.models import Comment
-        comments = Comment.objects.filter(discussion=self)
+        comments = Comment.objects.filter(discussion=self, parent=None)
+        
         return comments

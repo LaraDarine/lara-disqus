@@ -1,111 +1,158 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
-    
 
-    <div class="discussion">
-        <a href="#">{{ discussion.topic.title }}</a>
-        <p>{{ discussion.content }}</p>
-        <p>By <span>{{ discussion.author.username }}</span></p>
-        <div>
-            {% if current_user in discussion.likes.all %}
+<section class="container mx-auto">
+    <div class="card m-2">
+        <img src="{{ discussion.image.url }}" class="card-img-top" alt="{{ discussion.id }}">
+        <div class="card-body">
+            <a href="{{ discussion.topic.title }}">
+                <h5 class="card-title">{{ discussion.topic.title }}</h5>
+            </a>
+            <p class="card-text">{{ discussion.content }}</p>
+        </div>
+        <div class="card-footer">
+            <div class="float-left">
+                {% if current_user in discussion.likes.all %}
                 <a class="like" href="{% url 'toggle_like' pk=discussion.id %}">
-                        liked
+                    liked
                 </a>
-                {% else %}    
+                {% else %}
                 <a class="gray" href="{% url 'toggle_like' pk=discussion.id %}">
-                        like
+                    like
                 </a>
                 {% endif %}
-                <span>{{ discussion.likes_count }}</span>
-            {% if current_user in discussion.dislikes.all %}
+                <span class="badge badge-primary">{{ discussion.likes_count }}</span>
+                {% if current_user in discussion.dislikes.all %}
                 <a class="dislike" href="{% url 'toggle_dislike' pk=discussion.id %}">
-                        disliked
+                    disliked
                 </a>
-                {% else %}    
+                {% else %}
                 <a class="gray" href="{% url 'toggle_dislike' pk=discussion.id %}">
-                        dislike
+                    dislike
                 </a>
                 {% endif %}
-                <span>{{ discussion.dislikes_count }}</span>
+                <span class="badge badge-danger">{{ discussion.dislikes_count }}</span>
+            </div>
+            <div class="float-right">
+                <div>
+                    {{ discussion.author.username | capfirst }}
+                    <small class="text-muted">{{ discussion.created_at |date:'m-d H:i'  }}</small>
+                </div>
+            </div>
+        </div>
+        <div class="" id="new-comment">
+            <form class="form-inline" action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ comment_form | crispy }}
+                <input class="btn btn-sm" type="submit" value=">>">
+            </form>
         </div>
     </div>
     <div class="">
-        <ul>
-            {% for comment in discussion.get_comments %}
-                <li>
-                    <div><strong>{{ comment.author.username }}: </strong>{{ comment.content }}</div>
-                    <div>
-                        {% if current_user in comment.likes.all %}
-                            <a class="like" href="{% url 'toggle_comment_like' pk=comment.id %}">
-                                    liked
-                            </a>
-                            {% else %}    
-                            <a class="gray" href="{% url 'toggle_comment_like' pk=comment.id %}">
-                                    like
-                            </a>
-                            {% endif %}
-                            <span>{{ comment.likes_count }}</span>
-                        {% if current_user in comment.dislikes.all %}
-                            <a class="dislike" href="{% url 'toggle_comment_dislike' pk=comment.id %}">
-                                    disliked
-                            </a>
-                            {% else %}    
-                            <a class="gray" href="{% url 'toggle_comment_dislike' pk=comment.id %}">
-                                    dislike
-                            </a>
-                            {% endif %}
-                            <span>{{ comment.dislikes_count }}</span>
+                <div class="card mx-2">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Latest Comments</h4>
                     </div>
-                    <div>
-                        <ul>
-                            {% for reply in comment.get_replies %}
-                                <li>
-                                    <div><strong>{{ reply.author.username }}: </strong>{{ reply.content }}</div>
-                                    <div>
-                                        {% if current_user in reply.likes.all %}
-                                            <a class="like" href="{% url 'toggle_reply_like' pk=reply.id %}">
-                                                    liked
-                                            </a>
-                                            {% else %}    
-                                            <a class="gray" href="{% url 'toggle_reply_like' pk=reply.id %}">
-                                                    like
-                                            </a>
-                                            {% endif %}
-                                            <span>{{ reply.likes_count }}</span>
-                                        {% if current_user in reply.dislikes.all %}
-                                            <a class="dislike" href="{% url 'toggle_reply_dislike' pk=reply.id %}">
-                                                    disliked
-                                            </a>
-                                            {% else %}    
-                                            <a class="gray" href="{% url 'toggle_reply_dislike' pk=reply.id %}">
-                                                    dislike
-                                            </a>
-                                            {% endif %}
-                                            <span>{{ reply.dislikes_count }}</span>
+                    <div class="comment-widgets">
+                        {% for comment in discussion.get_comments %}
+                        
+                        <!-- Comment Section -->
+                        <div class="d-flex flex-wrap w-100">
+                            <div class="p-2">
+                                <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583336/AAA/4.jpg"
+                                    alt="{{ comment.author}}" style="width:40px" class="rounded-circle">
+                            </div>
+                            <div class="comment-text w-100">
+                                <h6 class="bold">{{ comment.author}}</h6>
+                                <span class="m-b-15 d-block">
+                                    {{ comment.content }}
+                                </span>
+                                <div class="card-footer d-flex justify-content-between">
+                                    <div class="">
+                                        {% if current_user in comment.likes.all %}
+                                        <a class="like" href="{% url 'toggle_comment_like' pk=comment.id %}">
+                                            liked
+                                        </a>
+                                        {% else %}
+                                        <a class="gray" href="{% url 'toggle_comment_like' pk=comment.id %}">
+                                            like
+                                        </a>
+                                        {% endif %}
+                                        <span class="badge badge-primary">{{ comment.likes_count }}</span>
+                                        {% if current_user in comment.dislikes.all %}
+                                        <a class="dislike" href="{% url 'toggle_comment_dislike' pk=comment.id %}">
+                                            disliked
+                                        </a>
+                                        {% else %}
+                                        <a class="gray" href="{% url 'toggle_comment_dislike' pk=comment.id %}">
+                                            dislike
+                                        </a>
+                                        {% endif %}
+                                        <span class="badge badge-danger">{{ comment.dislikes_count }}</span>
                                     </div>
-                                </li>
+                                    <div class="">
+                                        {% if current_user == comment.author %}
+                                        <a href="#" class="btn btn-sm">Edit</a>
+                                        <a href="#" class="btn btn-sm">Delete</a>
+                                        {% endif %}
+                                        <a href="#" class="btn btn-sm">Reply</a>
+                                        <small class="text-muted">{{ comment.created_at |date:'m-d H:i'  }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Reply Section -->
+                            {% for reply in comment.replies.all %}
+                            <div class="d-flex flex-wrap w-100 pl-4 bg-light">
+                                <div class="p-2">
+                                    <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583336/AAA/4.jpg"
+                                        alt="{{ comment.author}}" style="width:40px" class="rounded-circle">
+                                </div>
+                                    <div class="comment-text w-100 block">
+                                        <h6 class="bold">{{ reply.author}}</h6>
+                                        <span class="m-b-15 d-block">
+                                            {{ reply.content }}
+                                        </span>
+                                        <div class="card-footer d-flex justify-content-between">
+                                            <div class="">
+                                                {% if current_user in reply.likes.all %}
+                                                <a class="like" href="{% url 'toggle_comment_like' pk=reply.id %}">
+                                                    liked
+                                                </a>
+                                                {% else %}
+                                                <a class="gray" href="{% url 'toggle_comment_like' pk=reply.id %}">
+                                                    like
+                                                </a>
+                                                {% endif %}
+                                                <span class="badge badge-primary">{{ reply.likes_count }}</span>
+                                                {% if current_user in reply.dislikes.all %}
+                                                <a class="dislike" href="{% url 'toggle_comment_dislike' pk=reply.id %}">
+                                                    disliked
+                                                </a>
+                                                {% else %}
+                                                <a class="gray" href="{% url 'toggle_comment_dislike' pk=reply.id %}">
+                                                    dislike
+                                                </a>
+                                                {% endif %}
+                                                <span class="badge badge-danger">{{ reply.dislikes_count }}</span>
+                                            </div>
+                                            <div class="">
+                                                {% if current_user == reply.author %}
+                                                <a href="#" class="btn btn-sm">Edit</a>
+                                                <a href="#" class="btn btn-sm">Delete</a>
+                                                {% endif %}
+                                                <a href="#" class="btn btn-sm">Reply</a>
+                                                <small class="text-muted">{{ reply.created_at |date:'m-d H:i'  }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
                             {% endfor %}
-                        </ul>
-                        <div id="new-reply">
-                            <form action="" method="post" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                {{ reply_form.as_p }}
-                                <input type="submit" value=">>">
-                            </form>
-
+                            <!-- end Reply Section -->
                         </div>
+                        <!-- end Comment Section -->
+                        {% endfor %}
                     </div>
-                </li>
-            {% endfor %}
-        </ul>
-        <div id="new-comment">
-            <form action="" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ comment_form.as_p }}
-                <input type="submit" value=">>">
-            </form>
-
-        </div>
+                </div>
     </div>
+</section>
 {% endblock %}
