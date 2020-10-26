@@ -40,7 +40,7 @@
                     <small class="text-muted">{{ discussion.created_at |date:'m-d H:i'  }}</small>
                 </div>
             </div>
-            <div class="" id="new-comment">
+            <div class="" id="new-comment-{{ discussion.id }}">
                 <form class="form-group" action="" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ comment_form | crispy }}
@@ -104,7 +104,7 @@
                             <small class="text-muted">{{ comment.created_at |date:'m-d H:i'  }}</small>
                         </div>
                     </div>
-                    <div class="new-comment">
+                    <div id="new-reply-{{ comment.id }}">
                         <form class="form-group" action="" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ comment_form | crispy }}
