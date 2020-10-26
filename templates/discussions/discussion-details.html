@@ -100,7 +100,7 @@
                             <a href="#" class="btn btn-sm">Edit</a>
                             <a href="#" class="btn btn-sm">Delete</a>
                             {% endif %}
-                            <a href="#" class="btn btn-sm">Reply</a>
+                            <button id="reply-{{ comment.id }}" href="#new-reply-{{ comment.id }}" class="btn btn-sm">Reply</button>
                             <small class="text-muted">{{ comment.created_at |date:'m-d H:i'  }}</small>
                         </div>
                     </div>
