@@ -1,19 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section class="container d-flex .flex-sm-wrap">
-    <div class="card-group">
+<section class="container card-columns mt-2">
+    <div class="">
         {% for discussion in discussions %}
-        <a href="{% url 'discussion_details' pk=discussion.id %}">
-            <div class="card m-2">
-                <img src="{{ discussion.image.url }}" class="card-img-top" alt="{{ discussion.id }}">
-                <div class="card-body">
-                    <a href="{{ discussion.topic.title }}">
-                        <h5 class="card-title">{{ discussion.topic.title }}</h5>
-                    </a>
-                    <p class="card-text">{{ discussion.content }}</p>
-                </div>
-                <div class="card-footer">
+        <div class="card">
+            {% if discussion.image %}
+            <img src="{{ discussion.image.url }}" class="card-img-top mx-auto" alt="{{ discussion.id }}">
+            {% else %}
+            <img src="/static/images/disqus.jpg" class="card-img-top mx-auto" alt="{{ discussion.id }}">
+            {% endif %}
+            <div class="card-body">
+                <a href="{{ discussion.topic.title }}">
+                    <h5 class="card-title text-primary">{{ discussion.topic.title }}</h5>
+                </a>
+                <p class="card-text">{{ discussion.content }}</p>
+            </div>
+            <div class="card-footer">
+                <a class="text-secondary float-right" href="{% url 'discussion_details' pk=discussion.id %}">Discuss</a>
                     <div class="float-left">
                         {% if current_user in discussion.likes.all %}
                         <a class="like" href="{% url 'toggle_like' pk=discussion.id %}">
@@ -24,7 +28,7 @@
                             like
                         </a>
                         {% endif %}
-                        <span class="badge badge-primary">{{ discussion.likes_count }}</span>
+                        <small class="badge badge-primary">{{ discussion.likes_count }}</small>
                         {% if current_user in discussion.dislikes.all %}
                         <a class="dislike" href="{% url 'toggle_dislike' pk=discussion.id %}">
                             disliked
@@ -34,7 +38,7 @@
                             dislike
                         </a>
                         {% endif %}
-                        <span class="badge badge-danger">{{ discussion.dislikes_count }}</span>
+                        <small class="badge badge-secondary">{{ discussion.dislikes_count }}</small>
                     </div>
                     <div class="float-right">
                         <div>
@@ -42,9 +46,8 @@
                             <small class="text-muted">{{ discussion.created_at |date:'m-d H:i'  }}</small>
                         </div>
                     </div>
-                </div>
             </div>
-        </a>
+        </div>
     </div>
     {% endfor %}
 </section>

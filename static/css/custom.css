@@ -1,16 +1,18 @@
-.btn-primary, .btn-secondary:hover {
+.btn-primary, .btn-secondary:hover, .badge-primary {
     background-color: #7f5da9;
     border-color: #7f5da9;
 }
 
-.btn-primary:hover, .btn-secondary {
+.btn-primary:hover, .btn-secondary, .badge-secondary {
     background-color: #e4609b;
     border-color: #e4609b;
 }
 
-
-.text-secondary, a .text-secondary{
+.text-secondary,
+a .text-secondary,
+a .text-primary:hover {
     color: #e4609b !important;
+    text-decoration: none !important;
 }
 
 .nav-link {
@@ -78,6 +80,10 @@ body {
 /* Disscusions styles */
 img {
     width: 250px;
+}
+
+.dis-img {
+    max-width: 400px;
 }
 
 .discussion {
