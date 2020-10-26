@@ -8,23 +8,23 @@
     <div class="card mb-3" >
         <div class="row no-gutters">
             <div class="col-md-6">
-                <img src="/static/images/welcome.png" class="card-img" alt="welcome">
+                <img src="/static/images/disqus.jpg" class="card-img mx-auto d-block" alt="welcome">
             </div>
             <div class="col-md-6">
-                <div class="card-body">
+                <div class="card-body py-4 my-5">
                     <h5 class="card-title">Login</h5>
                     <div class="card-text">
                         <form action="" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form | crispy}}
-                            <div class="float float-right">
-                                <input class="btn btn-primary float-left" type="submit" value="Login">
+                            <div class="mt-1 float float-right">
+                                <input class="btn btn-secondary" type="submit" value="Login">
                             </div>
                         </form>
                     </div>
-                    <div>
-                        <a href="{% url 'signup' %}" class="card-link">Don't have an account?</a>
-                        <a href="#" class="card-link">Reset password</a>
+                    <div class="card-footer ">
+                        <a href="{% url 'signup' %}" class="card-link text-primary">New?</a>
+                        <a href="#" class="card-link text-primary">Reset password</a>
                     </div>
                 </div>
             </div>

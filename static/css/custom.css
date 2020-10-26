@@ -106,6 +106,13 @@ a {
     font-weight: 1.2em;
 }
 
+/* Cards */
+
+.card-footer {
+    background-color: #f8f9fa;
+    border: none;
+}
+
 @media only screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) {
