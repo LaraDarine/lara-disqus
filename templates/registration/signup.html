@@ -21,12 +21,12 @@
                             {{ user_form | crispy}}
                             {{ picture_form | crispy }}
                             <div class="float float-right">
-                                <input class="btn btn-primary float-left" type="submit" value="signup">
+                                <input class="btn btn-secondary float-left" type="submit" value="signup">
                             </div>
                         </form>
                     </div>
                     <div>
-                        <a href="{% url 'login' %}" class="card-link">Already have an account?</a>
+                        <a href="{% url 'login' %}" class="card-link text-primary">Already have an account?</a>
                     </div>
                 </div>
             </div>
