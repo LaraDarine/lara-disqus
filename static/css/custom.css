@@ -141,6 +141,10 @@ and (max-device-width : 1024px) {
     }
 }
 
+.inline-icon {
+    vertical-align: bottom;
+}
+
 
 @media only screen and (max-width: 600px) {
     #welcome {

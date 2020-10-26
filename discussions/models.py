@@ -30,6 +30,9 @@ class Discussion(models.Model):
         blank=True
         )
 
+    class _Meta:
+        ordering = ('id',)
+
     def __str__(self):
         return f'{self.author.username}-{self.topic.title}-{self.created_at}'
 

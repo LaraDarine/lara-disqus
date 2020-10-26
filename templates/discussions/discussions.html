@@ -5,47 +5,62 @@
     <div class="">
         {% for discussion in discussions %}
         <div class="card">
-            {% if discussion.image %}
-            <img src="{{ discussion.image.url }}" class="card-img-top mx-auto" alt="{{ discussion.id }}">
-            {% else %}
-            <img src="/static/images/disqus.jpg" class="card-img-top mx-auto" alt="{{ discussion.id }}">
-            {% endif %}
             <div class="card-body">
                 <a href="{{ discussion.topic.title }}">
-                    <h5 class="card-title text-primary">{{ discussion.topic.title }}</h5>
+                    <h5 class="card-title text-primary mb-0">{{ discussion.topic.title }}</h5>
                 </a>
-                <p class="card-text">{{ discussion.content }}</p>
+                <div class="">
+                    <div>
+                        <small class="text-muted">{{ discussion.created_at |date:'m-d H:i'  }}</small>
+                    </div>
+                    <p class="card-text mt-2">{{ discussion.content }}</p>
+                </div>
+            </div>
+            <div>
+                {% if discussion.image %}
+                <img src="{{ discussion.image.url }}" class="card-img mx-auto" alt="{{ discussion.id }}">
+                {% else %}
+                <img src="/static/images/disqus.jpg" class="card-img mx-auto" alt="{{ discussion.id }}">
+                {% endif %}
             </div>
             <div class="card-footer">
-                <a class="text-secondary float-right" href="{% url 'discussion_details' pk=discussion.id %}">Discuss</a>
-                    <div class="float-left">
+                <div class="d-flex justify-content-between">
+                    <div>
                         {% if current_user in discussion.likes.all %}
-                        <a class="like" href="{% url 'toggle_like' pk=discussion.id %}">
-                            liked
+                        <a class="like mb-3" href="{% url 'toggle_like' pk=discussion.id %}">
+                            <i class="inline-icon material-icons">thumb_up</i>
+                            Liked
                         </a>
                         {% else %}
                         <a class="gray" href="{% url 'toggle_like' pk=discussion.id %}">
-                            like
+                            <i class="inline-icon material-icons">thumb_up</i>
+                              Like
                         </a>
                         {% endif %}
-                        <small class="badge badge-primary">{{ discussion.likes_count }}</small>
+                        <small class="">{{ discussion.likes_count }}</small>
+                    </div>
+                    <div>
+
                         {% if current_user in discussion.dislikes.all %}
                         <a class="dislike" href="{% url 'toggle_dislike' pk=discussion.id %}">
-                            disliked
+                            <i class="inline-icon material-icons">thumb_down</i>
+                            Disliked
                         </a>
                         {% else %}
                         <a class="gray" href="{% url 'toggle_dislike' pk=discussion.id %}">
-                            dislike
+                            <i class="inline-icon material-icons">thumb_down</i>
+                            Dislike
                         </a>
                         {% endif %}
-                        <small class="badge badge-secondary">{{ discussion.dislikes_count }}</small>
+                        <small class="">{{ discussion.dislikes_count }}</small>
                     </div>
-                    <div class="float-right">
-                        <div>
-                            {{ discussion.author.username | capfirst }}
-                            <small class="text-muted">{{ discussion.created_at |date:'m-d H:i'  }}</small>
-                        </div>
+                    <div>
+                        <a class="text-muted" href="{% url 'discussion_details' pk=discussion.id %}">
+                            <i class="inline-icon material-icons">more_horiz</i>
+                            Discuss
+                        </a>
                     </div>
+                </div>
             </div>
         </div>
     </div>

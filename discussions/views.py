@@ -13,7 +13,7 @@ def home(request):
         return render(request, 'discussions/welcome.html')
 
 def discussions(request):
-    discussions = Discussion.objects.all().order_by('topic')
+    discussions = Discussion.objects.all().order_by('id')
 
     context = {
         'discussions': discussions,
