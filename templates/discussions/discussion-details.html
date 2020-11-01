@@ -15,15 +15,15 @@
         <div class="px-5">
             <div id="stats" class="d-flex justify-content-between card-footer">
                 <div>
-                    <i class="inline-icon material-icons">thumb_up</i>
+<i class="fas fa-thumbs-up"></i>
                     <small class="">{{ discussion.likes_count }}</small>
                 </div>
                 <div>
-                    <i class="inline-icon material-icons">thumb_down</i>
+<i class="fas fa-thumbs-down"></i>
                     <small class="">{{ discussion.dislikes_count }}</small>
                 </div>
                 <div>
-                    <i class="inline-icon material-icons">more_horiz</i>
+                    <i class="far fa-comment-alt"></i>
                     <small class="">{{ discussion.likes_count }}</small>
                 </div>
             </div>
@@ -31,12 +31,12 @@
                 <div>
                     {% if current_user in discussion.likes.all %}
                     <a class="like mb-3" href="{% url 'toggle_like' pk=discussion.id %}">
-                        <i class="inline-icon material-icons">thumb_up</i>
+    <i class="fas fa-thumbs-up"></i>
                         Liked
                     </a>
                     {% else %}
                     <a class="gray" href="{% url 'toggle_like' pk=discussion.id %}">
-                        <i class="inline-icon material-icons">thumb_up</i>
+    <i class="far fa-thumbs-up"></i>
                           Like
                     </a>
                     {% endif %}
@@ -45,12 +45,12 @@
 
                     {% if current_user in discussion.dislikes.all %}
                     <a class="dislike" href="{% url 'toggle_dislike' pk=discussion.id %}">
-                        <i class="inline-icon material-icons">thumb_down</i>
+    <i class="fas fa-thumbs-down"></i>
                         Disliked
                     </a>
                     {% else %}
                     <a class="gray" href="{% url 'toggle_dislike' pk=discussion.id %}">
-                        <i class="inline-icon material-icons">thumb_down</i>
+    <i class="far fa-thumbs-down"></i>
                         Dislike
                     </a>
                     {% endif %}
@@ -58,7 +58,7 @@
                 </div>
                 <div>
                     <a class="text-muted" href="{% url 'discussion_details' pk=discussion.id %}">
-                        <i class="inline-icon material-icons">more_horiz</i>
+                        <i class="far fa-comment-alt"></i>
                         Comment
                     </a>
                 </div>
