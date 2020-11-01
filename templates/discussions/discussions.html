@@ -1,36 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div id="background-container">
+<section class="main-carousel container mx-auto mt-5">
 
-</div>
-<section class="main-carousel">
-    
-        {% for discussion in discussions %}
-        <div class="carousel-cell card">
+    {% for discussion in discussions %}
+    <div class="carousel-cell card">
+        {% if discussion.image %}
+        <img src="{{ discussion.image.url }}" class="card-img" alt="{{ discussion.id }}">
+        {% else %}
+        <img src="/static/images/disqus.jpg" class="card-img" alt="{{ discussion.id }}">
+        {% endif %}
+        <div class="card-img-overlay filter">
             <div class="card-title">
                 <a href="{{ discussion.topic.title }}">
-                    <h5 class="text-primary mb-0">{{ discussion.topic.title }}</h5>
-                    <small class="text-muted">{{ discussion.created_at |date:'m-d H:i'  }}</small>
+                    <h5 class="text-white mb-0">{{ discussion.topic.title }}</h5>
+                    <small class="text-white">{{ discussion.created_at |date:'m-d H:i'  }}</small>
                 </a>
             </div>
-            <div>
-                {% if discussion.image %}
-                <img src="{{ discussion.image.url }}" class="mx-auto" alt="{{ discussion.id }}">
-                {% else %}
-                <img src="/static/images/disqus.jpg" class="mx-auto" alt="{{ discussion.id }}">
-                {% endif %}
-            </div>
-            <div class="">
-                <div class="d-flex justify-content-between">
-                        <a class="text-muted" href="{% url 'discussion_details' pk=discussion.id %}">
-                            <i class="inline-icon material-icons">more_horiz</i>
-                            Discuss
-                        </a>
-                    </div>
+            <div class="card-footer discuss-btn">
+                <div class="">
+                    <a class="text-white" href="{% url 'discussion_details' pk=discussion.id %}">
+                        <!-- <i class="inline-icon material-icons">more_horiz</i> -->
+                        Discuss
+                    </a>
                 </div>
             </div>
         </div>
+    </div>
+    
     {% endfor %}
 </section>
 {% endblock %}

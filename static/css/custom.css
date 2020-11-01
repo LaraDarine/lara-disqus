@@ -63,6 +63,16 @@ body {
     max-width: 50%;
 }
 
+.discuss-btn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: transparent;
+    border-top: transparent;
+}
+
 /* Header style */
 .navbar {
     padding: 1.5rem 1.7rem;
@@ -100,7 +110,7 @@ img {
     margin: 4px auto;
 }
 
-a {
+a, a:hover {
     text-decoration: none;
 }
 
@@ -119,6 +129,17 @@ a {
 
 .bold {
     font-weight: 1.2em;
+}
+
+.filter {
+    /* background-color: rgb(127 93 169 / 56%); */
+    background: linear-gradient(0deg, rgb(127 93 169 / 50%) , rgb(127 93 169 / 88%));
+    border-radius: 2rem;
+}
+
+.discuss-btn a {
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 @media only screen 
@@ -164,5 +185,9 @@ and (max-device-width : 1024px) {
     #welcome-card .btn {
         background: linear-gradient(90deg, rgb(127, 93, 169) , rgb(228, 96, 155)) !important;
         border: transparent;
+    }
+
+    .carousel-cell {
+        width: 54% !important;
     }
 }
