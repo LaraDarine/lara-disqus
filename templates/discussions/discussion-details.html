@@ -71,22 +71,24 @@
                     {% for comment in discussion.get_comments %}
     
                     <!-- Comment Section -->
-                    <div class="d-flex flex-wrap w-100">
+                    <div class="w-100">
                         <div class="comment-text p-3 w-100">
-                            <div>
+                            <div class="d-flex w-100">
                                 <img src="{{ comment.author.profile.picture.url}}"
                                     alt="{{ comment.author}}" class="profile-img">
-                                <span class="bold">{{ comment.author}}</span>
-                                <span class="m-b-15 d-block">
-                                    {{ comment.content }}
-                                </span>
+                                <div class="container ml-2 bg-light">
+                                    <a href="#" class="text-secondary">{{ comment.author}}</a>
+                                    <span class="m-b-15 ml-4 d-block">
+                                        {{ comment.content }}
+                                    </span>
+                                </div>
+                                {% if comment.image %}
+                                <div>
+                                    <img src="{{ comment.image.url }}" class="card-img-top" alt="{{ comment.id }}">
+                                </div>
+                                {% endif %}
                             </div>
-                            {% if comment.image %}
-                            <div>
-                                <img src="{{ comment.image.url }}" class="card-img-top" alt="{{ comment.id }}">
-                            </div>
-                            {% endif %}
-                            <div class="card-footer d-flex justify-content-between">
+                            <div class="card-footer border-0 d-flex justify-content-between">
                                 <div class="">
                                     {% if current_user in comment.likes.all %}
                                     <a class="like" href="{% url 'toggle_comment_like' pk=comment.id %}">
