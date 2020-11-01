@@ -112,13 +112,6 @@ a {
     font-weight: 1.2em;
 }
 
-/* Cards */
-
-.card-footer {
-    background-color: #f8f9fa;
-    border: none;
-}
-
 @media only screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) {
@@ -136,7 +129,7 @@ and (max-device-width : 1024px) {
     }
     
     #welcome-card .btn {
-        background: linear-gradient(-90deg, rgb(127, 93, 169) , rgb(228, 96, 155)) !important;
+        background: linear-gradient(90deg, rgb(127, 93, 169) , rgb(228, 96, 155)) !important;
         border: transparent;
     }
 }
@@ -156,11 +149,11 @@ and (max-device-width : 1024px) {
     #welcome-card {
         min-width: 100%;
         width: 100%;
-        margin-top: auto;
+        margin-top: auto !important;
     }
 
     #welcome-card .btn {
-        background: linear-gradient(-90deg, rgb(127, 93, 169) , rgb(228, 96, 155)) !important;
+        background: linear-gradient(90deg, rgb(127, 93, 169) , rgb(228, 96, 155)) !important;
         border: transparent;
     }
 }
