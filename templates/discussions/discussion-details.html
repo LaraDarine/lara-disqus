@@ -11,41 +11,43 @@
             </a>
             <p class="card-text">{{ discussion.content }}</p>
         </div>
-        <div class="card-footer border-top-0">
-            <div class="float-left">
-                {% if current_user in discussion.likes.all %}
-                <a class="like" href="{% url 'toggle_like' pk=discussion.id %}">
-                    liked
-                </a>
-                {% else %}
-                <a class="gray" href="{% url 'toggle_like' pk=discussion.id %}">
-                    like
-                </a>
-                {% endif %}
-                <span class="badge badge-primary">{{ discussion.likes_count }}</span>
-                {% if current_user in discussion.dislikes.all %}
-                <a class="dislike" href="{% url 'toggle_dislike' pk=discussion.id %}">
-                    disliked
-                </a>
-                {% else %}
-                <a class="gray" href="{% url 'toggle_dislike' pk=discussion.id %}">
-                    dislike
-                </a>
-                {% endif %}
-                <span class="badge badge-danger">{{ discussion.dislikes_count }}</span>
-            </div>
-            <div class="float-right">
+        <div class="">
+            <div class="d-flex justify-content-between">
                 <div>
-                    {{ discussion.author.username | capfirst }}
-                    <small class="text-muted">{{ discussion.created_at |date:'m-d H:i'  }}</small>
+                    {% if current_user in discussion.likes.all %}
+                    <a class="like mb-3" href="{% url 'toggle_like' pk=discussion.id %}">
+                        <i class="inline-icon material-icons">thumb_up</i>
+                        Liked
+                    </a>
+                    {% else %}
+                    <a class="gray" href="{% url 'toggle_like' pk=discussion.id %}">
+                        <i class="inline-icon material-icons">thumb_up</i>
+                          Like
+                    </a>
+                    {% endif %}
+                    <small class="">{{ discussion.likes_count }}</small>
                 </div>
-            </div>
-            <div class="" id="new-comment-{{ discussion.id }}">
-                <form class="form-group" action="" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ comment_form | crispy }}
-                    <input class="btn btn-sm" type="submit" value=">>">
-                </form>
+                <div>
+
+                    {% if current_user in discussion.dislikes.all %}
+                    <a class="dislike" href="{% url 'toggle_dislike' pk=discussion.id %}">
+                        <i class="inline-icon material-icons">thumb_down</i>
+                        Disliked
+                    </a>
+                    {% else %}
+                    <a class="gray" href="{% url 'toggle_dislike' pk=discussion.id %}">
+                        <i class="inline-icon material-icons">thumb_down</i>
+                        Dislike
+                    </a>
+                    {% endif %}
+                    <small class="">{{ discussion.dislikes_count }}</small>
+                </div>
+                <div>
+                    <a class="text-muted" href="{% url 'discussion_details' pk=discussion.id %}">
+                        <i class="inline-icon material-icons">more_horiz</i>
+                        Comment
+                    </a>
+                </div>
             </div>
         </div>
     </div>

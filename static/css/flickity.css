@@ -126,7 +126,7 @@ https://flickity.metafizzy.co
     width: 10px;
     height: 10px;
     margin: 0 8px;
-    background: #333;
+    background: rgb(180, 4, 4);
     border-radius: 50%;
     opacity: 0.25;
     cursor: pointer;
@@ -135,3 +135,20 @@ https://flickity.metafizzy.co
   .flickity-page-dots .dot.is-selected {
     opacity: 1;
   }
+
+
+.carousel-cell {
+  width: 33%;
+  height: 500px;
+  margin: 0 20px;
+  border-radius: 5px;
+  counter-increment: gallery-cell;
+}
+
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  content: counter(gallery-cell);
+  color: white;
+}
