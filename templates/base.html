@@ -36,7 +36,8 @@
                 </ul>
                 <div class="my-2 pr-4 my-lg-0">
                     {% if user.is_authenticated %}
-                    <div class="inline">{{ user.username  | capfirst }}</div>
+                    
+                    <img id="profile-img" src="{{ user.profile.picture.url }}" alt="{{ user.username  | capfirst }}">
                     
                     <a href="{% url 'logout' %}" class="btn btn-primary my-2 my-sm-0" type="submit">Logout</a>
                     {% else %}

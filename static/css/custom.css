@@ -96,6 +96,11 @@ body {
     font-size: 2rem;
 }
 
+#profile-img {
+    width: 41px;
+    border-radius: 25rem;
+}
+
 /* Disscusions styles */
 img {
     width: 250px;
@@ -133,7 +138,7 @@ a, a:hover {
 
 .filter {
     /* background-color: rgb(127 93 169 / 56%); */
-    background: linear-gradient(0deg, rgb(127 93 169 / 50%) , rgb(127 93 169 / 88%));
+    background: linear-gradient(0deg, rgb(228 96 155 / 41%) , rgb(127 93 169 / 88%));
     border-radius: 2rem;
 }
 
