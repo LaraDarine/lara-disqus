@@ -8,12 +8,26 @@ User = get_user_model()
 
 
 class CommentForm(forms.ModelForm):
+    content = forms.CharField(
+        label='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'your comment...'
+            }
+        )
+    )
+
+    image = forms.ImageField(
+        label='<i class="fas fa-camera"></i>',
+        allow_empty_file=True,
+        required=False
+    )
 
     class Meta:
         model = Comment
         fields = (
-            'content',
-            'image'
+            'image',
+            'content'
         )
     
     def add_comment(self, user, discussion):

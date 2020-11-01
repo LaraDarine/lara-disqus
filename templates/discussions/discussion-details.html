@@ -194,15 +194,14 @@
                         {% endfor %}
                     </div>
                 </div>
+                <div id="new-comment" class="border-top">
+                    <form class="form-group d-flex justify-content-end align-items-baseline" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ comment_form | crispy }}
+                    </form>
+                </div>
             </div>
-            <div class="new-comment">
-                <form class="form-group" action="" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ comment_form | crispy }}
-                    <input class="btn btn-sm" type="submit" value="comment">
-                </form>
             </div>
-        </div>
     </div>
 </section>
 {% endblock %}

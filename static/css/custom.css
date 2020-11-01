@@ -164,6 +164,38 @@ a, a:hover {
     background-color: transparent;
 }
 
+/* Comment styles */
+#new-comment {
+    padding: 4px;
+}
+
+#new-comment .form-group {
+    margin: 0 !important;
+}
+
+#div_id_content {
+    height: 40px;
+    width: 94%;
+}
+
+#div_id_image {
+    width: 4%;
+    font-size: larger;
+    color: #878787;
+}
+
+#div_id_content input {
+    margin: 2px 4px;
+    /* border-radius: 2.5rem; */
+    height: 52px;
+    border: none !important;
+    background-color: #f8f9fa;
+}
+
+.form-control-file {
+    display: none;
+}
+
 
 @media only screen 
 and (min-device-width : 768px) 
