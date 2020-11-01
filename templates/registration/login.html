@@ -5,24 +5,24 @@
 
 {% block content %}
 <section class='container mx-auto my-4'>
-    <div class="card mb-3" >
+    <div class="card mb-3 border-0" >
         <div class="row no-gutters">
             <div class="col-md-6">
                 <img src="/static/images/disqus.jpg" class="card-img mx-auto d-block" alt="welcome">
             </div>
             <div class="col-md-6">
-                <div class="card-body py-4 my-5">
+                <div class="card-body pl-md-0 py-4 my-md-5">
                     <h5 class="card-title">Login</h5>
-                    <div class="card-text">
+                    <div class="card-text py-3">
                         <form action="" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form | crispy}}
-                            <div class="mt-1 float float-right">
+                            <div class="mt-4 float float-right">
                                 <input class="btn btn-secondary" type="submit" value="Login">
                             </div>
                         </form>
                     </div>
-                    <div class="card-footer ">
+                    <div class="card-footer mt-1">
                         <a href="{% url 'signup' %}" class="card-link text-primary">New?</a>
                         <a href="#" class="card-link text-primary">Reset password</a>
                     </div>
