@@ -75,7 +75,7 @@
                         <div class="comment-text p-3 w-100 border-left border-primary">
                             <div>
                                 <img src="{{ comment.author.profile.picture.url}}"
-                                    alt="{{ comment.author}}" style="width:40px" class="rounded-circle">
+                                    alt="{{ comment.author}}" class="profile-img">
                                 <span class="bold">{{ comment.author}}</span>
                                 <span class="m-b-15 d-block">
                                     {{ comment.content }}
@@ -135,7 +135,7 @@
                             <div class="comment-text pl-4 w-100 border-left border-secondary">
                                 <div>
                                     <img src="{{ comment.author.profile.picture.url}}"
-                                        alt="{{ comment.author}}" style="width:40px" class="rounded-circle">
+                                        alt="{{ comment.author}}" class="rounded-circle">
                                     <span class="bold">{{ reply.author}}</span>
                                     <span class="m-b-15 d-block">
                                         {{ reply.content }}
