@@ -72,7 +72,7 @@
     
                     <!-- Comment Section -->
                     <div class="d-flex flex-wrap w-100">
-                        <div class="comment-text p-3 w-100 border-left border-primary">
+                        <div class="comment-text p-3 w-100">
                             <div>
                                 <img src="{{ comment.author.profile.picture.url}}"
                                     alt="{{ comment.author}}" class="profile-img">
@@ -132,10 +132,10 @@
                         {% for reply in comment.replies.all %}
                         <div class="d-flex flex-wrap w-100 pl-4 bg-light">
     
-                            <div class="comment-text pl-4 w-100 border-left border-secondary">
+                            <div class="comment-text pl-4 w-100">
                                 <div>
                                     <img src="{{ comment.author.profile.picture.url}}"
-                                        alt="{{ comment.author}}" class="rounded-circle">
+                                        alt="{{ comment.author}}" class="profile-img">
                                     <span class="bold">{{ reply.author}}</span>
                                     <span class="m-b-15 d-block">
                                         {{ reply.content }}
