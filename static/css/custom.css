@@ -158,7 +158,11 @@ a, a:hover {
     font-weight: bold;
 }
 
-/* Disscussion  */
+/* Disscussion details styles */
+#discuss-container .card-footer {
+    background-color: transparent;
+}
+
 
 @media only screen 
 and (min-device-width : 768px) 
