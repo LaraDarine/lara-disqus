@@ -23,6 +23,15 @@ a .text-primary:hover {
     color: #694c8e !important;
 }
 
+#background-container {
+    position: absolute;
+    top: 0;
+    background-color: #f7edf7;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
 /* Buttons */
 .btn {
     border-radius: 1.5em;
