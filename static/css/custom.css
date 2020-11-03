@@ -120,6 +120,12 @@ body {
     border-radius: 25rem;
 }
 
+.reply-profile-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 25rem;
+}
+
 /* Disscusions styles */
 img {
     width: 250px;
