@@ -27,10 +27,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('', include('accounts.urls')),
-    path('', include('replies.urls')),
     path('', include('comments.urls')),
     path('', include('discussions.urls')),
-    path('', include('topics.urls')),
 ]
 
 

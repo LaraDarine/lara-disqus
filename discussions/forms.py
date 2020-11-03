@@ -12,8 +12,9 @@ class DiscussionForm(UserCreationForm):
     class Meta:
         model = Discussion
         fields = (
-            'topic',
             'content',
+            'main_image',
+            'demo_image',
             'likes',
             'dislikes'
         )

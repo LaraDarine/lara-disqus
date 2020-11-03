@@ -1,22 +1,21 @@
 from django.db import models
-from topics.models import Topic
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
 
 class Discussion(models.Model):
-    topic = models.ForeignKey(
-        Topic,
-        related_name='topic',
-        on_delete=models.CASCADE)
     author = models.ForeignKey(
         User,
         related_name='author',
         on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
     content = models.CharField(max_length=1000)
     created_at = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(
+    main_image = models.ImageField(
+        upload_to='discussions/',
+        default='discussions/discussion.png')
+    demo_image = models.ImageField(
         upload_to='discussions/',
         default='discussions/discussion.png')
     likes = models.ManyToManyField(
