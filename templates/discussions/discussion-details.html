@@ -16,15 +16,15 @@
             <div id="stats" class="d-flex justify-content-between card-footer">
                 <div>
                     <i class="fas fa-thumbs-up"></i>
-                    <small class="">{{ discussion.likes_count }}</small>
+                    <span class="">{{ discussion.likes_count }}</span>
                 </div>
                 <div>
                     <i class="fas fa-thumbs-down"></i>
-                    <small class="">{{ discussion.dislikes_count }}</small>
+                    <span class="">{{ discussion.dislikes_count }}</span>
                 </div>
                 <div>
                     <i class="far fa-comment-alt"></i>
-                    <small class="">{{ discussion.likes_count }}</small>
+                    <span class="">{{ discussion.likes_count }}</span>
                 </div>
             </div>
             <div class="d-flex justify-content-between card-footer">
@@ -54,7 +54,6 @@
                         Dislike
                     </a>
                     {% endif %}
-                    <small class="">{{ discussion.dislikes_count }}</small>
                 </div>
                 <div>
                     <a class="text-muted" href="{% url 'discussion_details' pk=discussion.id %}">
@@ -76,8 +75,8 @@
                             <div class="d-flex w-100">
                                 <img src="{{ comment.author.profile.picture.url}}"
                                     alt="{{ comment.author}}" class="profile-img">
-                                <div class="container ml-2 bg-light">
-                                    <a href="#" class="text-secondary">{{ comment.author}}</a>
+                                <div class="container ml-2 bg-light comment-container">
+                                    <a href="#" class="text-primary">{{ comment.author}}</a>
                                     <span class="m-b-15 ml-4 d-block">
                                         {{ comment.content }}
                                     </span>
@@ -88,37 +87,51 @@
                                 </div>
                                 {% endif %}
                             </div>
-                            <div class="card-footer border-0 d-flex justify-content-between">
-                                <div class="">
-                                    {% if current_user in comment.likes.all %}
-                                    <a class="like" href="{% url 'toggle_comment_like' pk=comment.id %}">
-                                        liked
-                                    </a>
-                                    {% else %}
-                                    <a class="gray" href="{% url 'toggle_comment_like' pk=comment.id %}">
-                                        like
-                                    </a>
-                                    {% endif %}
-                                    <span class="badge badge-primary">{{ comment.likes_count }}</span>
-                                    {% if current_user in comment.dislikes.all %}
-                                    <a class="dislike" href="{% url 'toggle_comment_dislike' pk=comment.id %}">
-                                        disliked
-                                    </a>
-                                    {% else %}
-                                    <a class="gray" href="{% url 'toggle_comment_dislike' pk=comment.id %}">
-                                        dislike
-                                    </a>
-                                    {% endif %}
-                                    <span class="badge badge-danger">{{ comment.dislikes_count }}</span>
-                                </div>
-                                <div class="">
-                                    {% if current_user == comment.author %}
-                                    <a href="#" class="btn btn-sm">Edit</a>
-                                    <a href="#" class="btn btn-sm">Delete</a>
-                                    {% endif %}
-                                    <button id="reply-{{ comment.id }}" href="#new-reply-{{ comment.id }}"
-                                        class="btn btn-sm">Reply</button>
-                                    <small class="text-muted">{{ comment.created_at |date:'m-d H:i'  }}</small>
+                            <div class="mx-auto">
+                                <div class="border-0 d-flex justify-content-between">
+                                    <div class="comment-reactions">
+                                        <div class="text-muted comment-time pl-5">{{ comment.created_at |date:'m-d H:i'  }}</div>
+                                        <div>
+                                            {% if current_user in comment.likes.all %}
+                                            <a class="like btn btn-sm" href="{% url 'toggle_comment_like' pk=comment.id %}">
+                                                Liked
+                                            </a>
+                                            {% else %}
+                                            <a class="gray btn btn-sm" href="{% url 'toggle_comment_like' pk=comment.id %}">
+                                                Like
+                                            </a>
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {% if current_user in comment.dislikes.all %}
+                                            <a class="dislike btn btn-sm" href="{% url 'toggle_comment_dislike' pk=comment.id %}">
+                                                Disliked
+                                            </a>
+                                            {% else %}
+                                            <a class="gray btn btn-sm" href="{% url 'toggle_comment_dislike' pk=comment.id %}">
+                                                Dislike
+                                            </a>
+                                            {% endif %}
+                                        </div>
+                                        <div class="comment-crud">
+                                            {% if current_user == comment.author %}
+                                            <a href="#" class="btn btn-sm">Edit</a>
+                                            <a href="#" class="btn btn-sm">Delete</a>
+                                            {% endif %}
+                                            <a id="reply-{{ comment.id }}" href="#new-reply-{{ comment.id }}"
+                                                class="btn btn-sm">Reply</a>
+                                        </div>
+                                    </div>
+                                    <div id="comment-stats" class="d-flex justify-content-between">
+                                        <div class="pr-3 text-primary">
+                                            <i class="fas fa-thumbs-up"></i>
+                                            <small class="">{{ comment.likes_count }}</small>
+                                        </div>
+                                        <div class="pl-3 text-secondary">
+                                            <i class="fas fa-thumbs-down"></i>
+                                            <small class="">{{ comment.dislikes_count }}</small>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div id="new-reply-{{ comment.id }}">

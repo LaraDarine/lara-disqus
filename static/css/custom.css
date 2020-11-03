@@ -1,3 +1,10 @@
+* {
+    outline: red 1px solid;
+}
+
+.bg-light {
+    background-color: #f7f4fb !important;
+}
 
 .btn-primary, .btn-secondary:hover, .badge-primary {
     background-color: #7f5da9;
@@ -10,8 +17,8 @@
 }
 
 .text-secondary,
-a .text-secondary,
-a .text-primary:hover {
+a.text-secondary,
+a.text-primary:hover {
     color: #e4609b !important;
     text-decoration: none !important;
 }
@@ -190,6 +197,21 @@ a, a:hover {
     height: 52px;
     border: none !important;
     background-color: #f8f9fa;
+}
+
+.comment-container {
+    border-radius: 5px;
+}
+
+.comment-reactions,
+.comment-crud {
+    display: flex;
+    justify-content: space-around;
+}
+
+.comment-time {
+    font-size: small;
+    padding: 7px 0;
 }
 
 .form-control-file {
