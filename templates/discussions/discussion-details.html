@@ -30,7 +30,7 @@
             <div class="d-flex justify-content-between card-footer">
                 <div>
                     {% if current_user in discussion.likes.all %}
-                    <a class="like mb-3" href="{% url 'toggle_like' pk=discussion.id %}">
+                    <a class="text-primary mb-3" href="{% url 'toggle_like' pk=discussion.id %}">
                         <i class="fas fa-thumbs-up"></i>
                         Liked
                     </a>
@@ -44,7 +44,7 @@
                 <div>
 
                     {% if current_user in discussion.dislikes.all %}
-                    <a class="dislike" href="{% url 'toggle_dislike' pk=discussion.id %}">
+                    <a class="text-secondary" href="{% url 'toggle_dislike' pk=discussion.id %}">
                         <i class="fas fa-thumbs-down"></i>
                         Disliked
                     </a>
@@ -75,17 +75,17 @@
                             <div class="d-flex w-100">
                                 <img src="{{ comment.author.profile.picture.url}}"
                                     alt="{{ comment.author}}" class="profile-img">
-                                <div class="container ml-2 bg-light comment-container">
-                                    <a href="#" class="text-primary">{{ comment.author}}</a>
-                                    <span class="m-b-15 ml-4 d-block">
+                                <div class="w-100 pt-2 ml-2 bg-light comment-container">
+                                    <a href="#" class="text-dark font-weight-bold">{{ comment.author}}</a>
+                                    <span class="my-2 d-block">
                                         {{ comment.content }}
                                     </span>
+                                    {% if comment.image %}
+                                    <div class="">
+                                        <img src="{{ comment.image.url }}" class="card-img-top" alt="{{ comment.id }}">
+                                    </div>
+                                    {% endif %}
                                 </div>
-                                {% if comment.image %}
-                                <div>
-                                    <img src="{{ comment.image.url }}" class="card-img-top" alt="{{ comment.id }}">
-                                </div>
-                                {% endif %}
                             </div>
                             <div class="mx-auto">
                                 <div class="border-0 d-flex justify-content-between">
@@ -122,7 +122,7 @@
                                                 class="btn btn-sm">Reply</a>
                                         </div>
                                     </div>
-                                    <div id="comment-stats" class="d-flex justify-content-between">
+                                    <div id="comment-stats" class="d-flex">
                                         <div class="pr-3 text-primary">
                                             <i class="fas fa-thumbs-up"></i>
                                             <small class="">{{ comment.likes_count }}</small>
@@ -133,14 +133,13 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div id="new-reply-{{ comment.id }}">
-                                <form class="form-group" action="" method="post" enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    {{ comment_form | crispy }}
-                                    <input type="hidden" name="parent_id" value="{{ comment.id }}">
-                                    <input class="btn btn-sm" type="submit" value="reply">
-                                </form>
+                                <div id="new-reply-{{ comment.id }}" class="ml-5">
+                                    <form class="form-group d-flex justify-content-end align-items-baseline" action="" method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        {{ comment_form | crispy }}
+                                        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         <!-- Reply Section -->
