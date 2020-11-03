@@ -3,7 +3,7 @@
 } */
 
 .bg-light {
-    background-color: #f7f4fb !important;
+    background-color: #f2f6f9 !important;
 }
 
 .btn-primary, .btn-secondary:hover, .badge-primary {
@@ -202,7 +202,7 @@ a, a:hover {
     /* border-radius: 2.5rem; */
     height: 52px;
     border: none !important;
-    background-color: #f8f9fa;
+    background-color: #edf0f3;
 }
 
 .comment-container {
@@ -218,6 +218,10 @@ a, a:hover {
 .comment-time {
     font-size: small;
     padding: 7px 0;
+}
+
+.bg-reply {
+    background-color: #e8ecef;
 }
 
 .form-control-file {

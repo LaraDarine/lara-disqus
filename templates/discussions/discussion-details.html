@@ -14,15 +14,15 @@
         <img src="{{ discussion.image.url }}" class="card-img-top" alt="{{ discussion.id }}">
         <div class="px-5">
             <div id="stats" class="d-flex justify-content-between card-footer">
-                <div>
+                <div class="text-primary">
                     <i class="fas fa-thumbs-up"></i>
                     <span class="">{{ discussion.likes_count }}</span>
                 </div>
-                <div>
+                <div class="text-secondary">
                     <i class="fas fa-thumbs-down"></i>
                     <span class="">{{ discussion.dislikes_count }}</span>
                 </div>
-                <div>
+                <div class="text-primary">
                     <i class="far fa-comment-alt"></i>
                     <span class="">{{ discussion.likes_count }}</span>
                 </div>
@@ -139,7 +139,7 @@
                                     </div>
                                 </div>
                                 <div id="new-reply-{{ comment.id }}">
-                                    <form class="form-group d-flex justify-content-end align-items-baseline" action=""
+                                    <form class="ml-4 pl-3 form-group d-flex justify-content-end align-items-baseline" action=""
                                         method="post" enctype="multipart/form-data">
                                         {% csrf_token %}
                                         {{ comment_form | crispy }}
@@ -157,7 +157,7 @@
                                 <div class="d-flex w-100">
                                     <img src="{{ reply.author.profile.picture.url}}" alt="{{ reply.author}}"
                                         class="reply-profile-img">
-                                    <div class="w-100 pt-2 ml-2 pl-2 bg-light comment-container">
+                                    <div class="w-100 pt-2 ml-2 pl-2 bg-reply comment-container">
                                         <a href="#" class="text-dark font-weight-bold">{{ reply.author}}</a>
                                         <span class="my-2 d-block">
                                             {{ reply.content }}
@@ -221,14 +221,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="new-reply-{{ reply.id }}">
-                                        <form class="form-group d-flex justify-content-end align-items-baseline"
-                                            action="" method="post" enctype="multipart/form-data">
-                                            {% csrf_token %}
-                                            {{ comment_form | crispy }}
-                                            <input type="hidden" name="parent_id" value="{{ comment.id }}">
-                                        </form>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
