@@ -6,21 +6,20 @@
     {% for discussion in discussions %}
     <div class="carousel-cell card">
         {% if discussion.image %}
-        <img src="{{ discussion.image.url }}" class="card-img" alt="{{ discussion.id }}">
+        <img src="{{ discussion.demo_image.url }}" class="card-img" alt="{{ discussion.id }}">
         {% else %}
         <img src="/static/images/disqus.jpg" class="card-img" alt="{{ discussion.id }}">
         {% endif %}
         <div class="card-img-overlay filter">
             <div class="card-title">
                 <a href="{{ discussion.topic.title }}">
-                    <h5 class="text-white mb-0">{{ discussion.topic.title }}</h5>
-                    <small class="text-white">{{ discussion.created_at |date:'m-d H:i'  }}</small>
+                    <h5 class="text-white mb-0">{{ discussion.title }}</h5>
+                    <small class="text-white">{{ discussion.created_at | date:'m-d H:i'  }}</small>
                 </a>
             </div>
             <div class="card-footer discuss-btn">
                 <div class="">
                     <a class="text-white" href="{% url 'discussion_details' pk=discussion.id %}">
-                        <!-- <i class="inline-icon material-icons">more_horiz</i> -->
                         Discuss
                     </a>
                 </div>

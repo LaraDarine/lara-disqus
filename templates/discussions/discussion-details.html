@@ -7,11 +7,11 @@
     <div class="card col-sm-12 border-0">
         <div class="card-body mx-auto px-5">
             <a href="{{ discussion.topic.title }}">
-                <h5 class="card-title text-primary">{{ discussion.topic.title }}</h5>
+                <h5 class="card-title text-primary">{{ discussion.title }}</h5>
             </a>
             <p class="card-text">{{ discussion.content }}</p>
         </div>
-        <img src="{{ discussion.image.url }}" class="card-img-top" alt="{{ discussion.id }}">
+        <img src="{{ discussion.demo_image.url }}" class="card-img-top" alt="{{ discussion.id }}">
         <div class="px-5">
             <div id="stats" class="d-flex justify-content-between card-footer">
                 <div class="text-primary">
