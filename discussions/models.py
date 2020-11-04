@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.db.models import Count
 
 User = get_user_model()
 
@@ -50,6 +51,16 @@ class Discussion(models.Model):
         
         return comments
     
-    def sort_comments(self, request):
-        current_user = request.user
-        return not current_user.profile.best_comments_order
+    def sort_comments(self, user):
+        toggle_user_choice = not user.profile.best_comments_order
+        user.profile.save()
+        return user
+    
+    def order_comments(self, user):
+        if user.profile.best_comments_order:
+            best_comments = self.get_comments().annotate(
+                num_likes=Count('likes')).order_by('-num_likes')
+            return best_comments
+        else:
+            latest_comments = self.get_comments().order_by('-created_at')
+            return latest_comments
