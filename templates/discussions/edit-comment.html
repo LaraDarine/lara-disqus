@@ -13,7 +13,6 @@
             <div id="update-comment" class="modal-body">
                 <form class="form-group" action=""
                     method="post" enctype="multipart/form-data">
-                    {% load crispy_forms_tags %}
                     {% csrf_token %}
                     {{ comment_form.content }}
                     <input type="hidden" name="comment_id" value="{{ comment.id }}">
@@ -28,6 +27,8 @@
 {% block jquery %}
     <script>
         jQuery(document).ready(function($) {
+            $('#id_content').addClass('form-control')
+            $('#id_image').addClass('form-control-file')
             $('#commentModal').modal('show')
         })
     </script>
