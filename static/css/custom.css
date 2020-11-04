@@ -162,7 +162,7 @@ a, a:hover {
 }
 
 .carousel-cell img {
-    /* height: inherit; */
+    height: inherit;
 }
 
 .filter {
