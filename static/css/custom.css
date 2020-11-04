@@ -53,8 +53,9 @@ html {
 
 }
 ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
+    width: 0;
+    height: 0;
+    background: transparent;
 }
 
 body {
