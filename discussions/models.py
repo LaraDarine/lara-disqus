@@ -49,3 +49,7 @@ class Discussion(models.Model):
         comments = Comment.objects.filter(discussion=self, parent=None)
         
         return comments
+    
+    def sort_comments(self, request):
+        current_user = request.user
+        return not current_user.profile.best_comments_order
