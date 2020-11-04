@@ -211,7 +211,7 @@ a, a:hover {
 
 .comment-reactions,
 .comment-crud {
-    display: flex;
+    display: contents;
     justify-content: space-around;
 }
 
