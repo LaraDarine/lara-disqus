@@ -19,7 +19,8 @@
             <div class="border-0 d-flex justify-items-around">
                 <div class="comment-reactions">
                     <div class="text-muted comment-time pl-5">
-                        {{ reply.created_at |date:'m-d H:i'  }}</div>
+                        {% load humanize %}
+                        {{ reply.created_at|naturaltime  }}</div>
                     <div>
                         {% if current_user in reply.likes.all %}
                         <a class="like btn btn-sm"

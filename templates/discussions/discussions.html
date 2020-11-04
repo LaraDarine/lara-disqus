@@ -14,7 +14,8 @@
             <div class="card-title">
                 <a href="{{ discussion.topic.title }}">
                     <h5 class="text-white mb-0">{{ discussion.title }}</h5>
-                    <small class="text-white">{{ discussion.created_at | date:'m-d H:i'  }}</small>
+                    {% load humanize %}
+                    <small class="text-white">{{ discussion.created_at|naturaltime  }}</small>
                 </a>
             </div>
             <div class="card-footer discuss-btn">
