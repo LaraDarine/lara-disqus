@@ -215,6 +215,10 @@ a, a:hover {
     justify-content: space-around;
 }
 
+.comment-reactions .btn {
+    min-width: auto !important;
+}
+
 .comment-time {
     font-size: small;
     padding: 7px 0;

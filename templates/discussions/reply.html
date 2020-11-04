@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="mx-auto">
-            <div class="border-0 d-flex justify-content-between">
+            <div class="border-0 d-flex justify-items-around">
                 <div class="comment-reactions">
                     <div class="text-muted comment-time pl-5">
                         {{ reply.created_at |date:'m-d H:i'  }}</div>
@@ -52,18 +52,16 @@
                         <a href="{% url 'delete_comment' pk=reply.id %}"
                             class="btn btn-sm">Delete</a>
                         {% endif %}
-                        <a id="reply-{{ reply.id }}" href="#new-reply-{{ reply.id }}"
-                            class="btn btn-sm">Reply</a>
                     </div>
-                </div>
-                <div id="comment-stats" class="d-flex">
-                    <div class="pr-3 text-primary">
-                        <i class="fas fa-thumbs-up"></i>
-                        <small class="">{{ reply.likes_count }}</small>
-                    </div>
-                    <div class="pl-3 text-secondary">
-                        <i class="fas fa-thumbs-down"></i>
-                        <small class="">{{ reply.dislikes_count }}</small>
+                    <div id="comment-stats" class="d-flex">
+                        <div class="pr-3 text-primary">
+                            <i class="fas fa-thumbs-up"></i>
+                            <small class="">{{ reply.likes_count }}</small>
+                        </div>
+                        <div class="pl-3 text-secondary">
+                            <i class="fas fa-thumbs-down"></i>
+                            <small class="">{{ reply.dislikes_count }}</small>
+                        </div>
                     </div>
                 </div>
             </div>

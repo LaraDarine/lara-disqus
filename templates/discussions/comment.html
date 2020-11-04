@@ -53,18 +53,16 @@
                         <a href="#" class="btn btn-sm">Edit</a>
                         <a href="#" class="btn btn-sm">Delete</a>
                         {% endif %}
-                        <a id="reply-{{ comment.id }}" href="#new-reply-{{ comment.id }}"
-                            class="btn btn-sm">Reply</a>
                     </div>
-                </div>
-                <div id="comment-stats" class="d-flex">
-                    <div class="pr-3 text-primary">
-                        <i class="fas fa-thumbs-up"></i>
-                        <small class="">{{ comment.likes_count }}</small>
-                    </div>
-                    <div class="pl-3 text-secondary">
-                        <i class="fas fa-thumbs-down"></i>
-                        <small class="">{{ comment.dislikes_count }}</small>
+                    <div id="comment-stats" class="d-flex">
+                        <div class="pr-3 text-primary">
+                            <i class="fas fa-thumbs-up"></i>
+                            <small class="">{{ comment.likes_count }}</small>
+                        </div>
+                        <div class="pl-3 text-secondary">
+                            <i class="fas fa-thumbs-down"></i>
+                            <small class="">{{ comment.dislikes_count }}</small>
+                        </div>
                     </div>
                 </div>
             </div>

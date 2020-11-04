@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<section id="discuss-container" class="row mt-1">
-    <div class="card col-sm-12 border-0">
+<section id="discuss-container" class="row mt-3">
+    <div class="card col-sm-6 mx-auto border-0">
         <div class="card-body mx-auto px-5">
             <a href="{{ discussion.topic.title }}">
                 <h5 class="card-title text-primary">{{ discussion.title }}</h5>
             </a>
             <p class="card-text">{{ discussion.content }}</p>
         </div>
-        <img src="{{ discussion.main_image.url }}" class="card-img-top" alt="{{ discussion.id }}">
+        <img src="{{ discussion.main_image.url }}" class="card-img" alt="{{ discussion.id }}">
         <div class="px-5">
             <div id="stats" class="d-flex justify-content-between card-footer">
                 <div class="text-primary">
