@@ -6,7 +6,7 @@
     {% for discussion in discussions %}
     <div class="carousel-cell card">
         {% if discussion.demo_image %}
-        <img src="{{ discussion.demo_image.url }}" class="card-img" alt="{{ discussion.id }}">
+        <img src="{{ discussion.demo_image.url }}" class="card-img m-auto" alt="{{ discussion.id }}">
         {% else %}
         <img src="/static/images/disqus.jpg" class="card-img" alt="{{ discussion.id }}">
         {% endif %}

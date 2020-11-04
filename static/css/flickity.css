@@ -143,13 +143,4 @@ https://flickity.metafizzy.co
   margin: 0 20px;
   border: none;
   background-color: linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7));
-  counter-increment: gallery-cell;
-}
-
-/* cell number */
-.carousel-cell:before {
-  display: block;
-  text-align: center;
-  content: counter(gallery-cell);
-  color: white;
 }
