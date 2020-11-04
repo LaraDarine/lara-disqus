@@ -70,11 +70,18 @@ def edit_comment(request, pk):
             comment_form = CommentForm(request.POST, request.FILES, instance=comment)
 
             if comment_form.is_valid():
-                form.save()
+                comment_form.save()
+                return redirect('discussion_details', pk=comment.discussion.id)
         else:
             comment_form = CommentForm(instance=comment)
 
-        return HttpResponseRedirect(request.path_info)
+        
+        context = {
+            'comment': comment,
+            'comment_form': comment_form
+        }
+
+        return render(request, 'discussions/edit-comment.html', context)
     else:
         return redirect('home')
 

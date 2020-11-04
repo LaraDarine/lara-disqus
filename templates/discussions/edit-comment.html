@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="commentModalLabel">Edit your comment on {{ comment.discussion.title }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="update-comment" class="modal-body">
+                <form class="form-group" action=""
+                    method="post" enctype="multipart/form-data">
+                    {% load crispy_forms_tags %}
+                    {% csrf_token %}
+                    {{ comment_form.content }}
+                    <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary" value="Update"></input>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% block jquery %}
+    <script>
+        jQuery(document).ready(function($) {
+            $('#commentModal').modal('show')
+        })
+    </script>
+{% endblock %}
+{% endblock %}
