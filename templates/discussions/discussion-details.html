@@ -62,7 +62,7 @@
         <div class="card border-0 col-sm-12">
             <div class="card-body">
                 <div class="comment-widgets">
-                    {% for comment in discussion.get_comments|dictsortreversed:"created_at" %}
+                    {% for comment in discussion.get_comments.all %}
                     <!-- Comment Section -->
                     {% include './comment.html' %}
                     <!-- Reply Section -->

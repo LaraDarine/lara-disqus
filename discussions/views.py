@@ -54,9 +54,11 @@ def discussion_details(request, pk):
                 return HttpResponseRedirect(request.path_info)
 
     comment_form = CommentForm()
+    ordered_comments = discussion.get_comments().order_by('created_at').all()
     context = {
         'discussion': discussion,
         'current_user': request.user,
+        'ordered_comments': ordered_comments,
         'comment_form': comment_form
     }
 
