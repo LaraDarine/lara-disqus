@@ -52,7 +52,8 @@
                     <div class="comment-crud">
                         {% if current_user == comment.author %}
                         <a href="{% url 'edit_comment' pk=comment.id %}" class="btn btn-sm">Edit</a>
-                        <a href="#" class="btn btn-sm">Delete</a>
+                        <a href="{% url 'delete_comment' pk=comment.id %}"
+                            class="btn btn-sm">Delete</a>
                         {% endif %}
                     </div>
                     <div id="comment-stats" class="d-flex">
