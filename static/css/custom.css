@@ -253,10 +253,31 @@ and (max-device-width : 1024px) {
         background: linear-gradient(90deg, rgb(127, 93, 169) , rgb(228, 96, 155)) !important;
         border: transparent;
     }
+
 }
 
 .inline-icon {
     vertical-align: bottom;
+}
+
+@media only screen 
+and (max-device-width : 1024px) {
+    /* Navbar */
+    .navbar-nav {
+        padding-left: 0;
+        text-align: right;
+        list-style: none !important;
+    }
+
+    .nav-item {
+        margin-left: 0 !important;
+    }
+
+    #auth-btns {
+        padding-right: 0 !important;
+        float: right;
+    }
+
 }
 
 
@@ -281,4 +302,5 @@ and (max-device-width : 1024px) {
     .carousel-cell {
         width: 54% !important;
     }
+
 }
