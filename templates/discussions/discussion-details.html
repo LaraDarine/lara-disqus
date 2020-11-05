@@ -3,8 +3,8 @@
 {% block content %}
 <section id="discuss-container" class="row pb-4">
     <div class="card col-lg-6 col-sm-12 mx-auto border-0">
-        <div class="card-body">
-            <h5 class="card-title text-primary">{{ discussion.title }}</h5>
+        <div class="card-body pl-0">
+            <h5 class="card-title">{{ discussion.title }}</h5>
             <p class="card-text">{{ discussion.content }}</p>
         </div>
         <img src="{{ discussion.main_image.url }}" class="card-img" alt="{{ discussion.id }}">
