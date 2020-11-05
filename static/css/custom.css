@@ -190,7 +190,7 @@ a, a:hover {
 }
 
 #div_id_content input {
-    margin: 2px 4px;
+    margin: 2px 12px;
     /* border-radius: 2.5rem; */
     height: 52px;
     border: none !important;

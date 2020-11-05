@@ -27,6 +27,9 @@ class SignUpForm(UserCreationForm):
 class UserPictureForm(forms.ModelForm):
     class Meta:
         model = Profile
+        picture = forms.ImageField(
+        label='<i class="fas fa-camera"></i>',
+        )
         fields = (
             'picture',
         )
