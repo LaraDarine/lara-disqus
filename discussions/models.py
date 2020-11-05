@@ -51,11 +51,6 @@ class Discussion(models.Model):
         
         return comments
     
-    def sort_comments(self, user):
-        toggle_user_choice = not user.profile.best_comments_order
-        user.profile.save()
-        return user
-    
     def order_comments(self, user):
         if user.profile.best_comments_order:
             best_comments = self.get_comments().annotate(

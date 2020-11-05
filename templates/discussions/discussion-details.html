@@ -38,7 +38,6 @@
                     {% endif %}
                 </div>
                 <div>
-
                     {% if current_user in discussion.dislikes.all %}
                     <a class="text-secondary" href="{% url 'toggle_dislike' pk=discussion.id %}">
                         <i class="fas fa-thumbs-down"></i>
@@ -61,6 +60,18 @@
         </div>
         <div class="card border-0 col-sm-12">
             <div class="card-body">
+                <div class="float-right dropleft">
+                    <a class="btn btn-sm dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-comment-alt"></i>
+                    </a>
+                    <div class="dropdown-menu bg-transparent">
+                        <a class="dropdown-item" href="{% url 'toggle_order' %}">
+                            <i class="far fa-comment-alt"></i>
+                            Latest
+                        </a>
+                    </div>
+                </div>
                 <div class="comment-widgets">
                     {% for comment in ordered_comments.all %}
                     <!-- Comment Section -->

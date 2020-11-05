@@ -127,3 +127,10 @@ def toggle_dislike(request, pk):
                 discussion.likes.remove(current_user.id)
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+def toggle_order(request):
+    current_user = request.user
+    current_user.profile.best_comments_order = not current_user.profile.best_comments_order
+    current_user.profile.save()
+    print(current_user.profile)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/')) 
