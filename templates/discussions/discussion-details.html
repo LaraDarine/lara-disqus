@@ -63,12 +63,21 @@
                 <div class="float-right dropleft">
                     <a class="btn btn-sm dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <i class="far fa-comment-alt"></i>
+                        {% if current_user.profile.best_comments_order %}
+                            <i class="text-warning fas fa-star"></i>
+                        {% else %}
+                            <i class="text-primary fas fa-clock"></i>
+                        {% endif %}
                     </a>
-                    <div class="dropdown-menu bg-transparent">
-                        <a class="dropdown-item" href="{% url 'toggle_order' %}">
-                            <i class="far fa-comment-alt"></i>
-                            Latest
+                    <div class="dropdown-menu pr-2 bg-transparent">
+                        <a class="dropdown-item mx-0" href="{% url 'toggle_order' %}">
+                            {% if current_user.profile.best_comments_order %}
+                                <i class="far fa-clock"></i>
+                                Latest
+                            {% else %}
+                                <i class="far fa-star"></i>
+                                Best
+                            {% endif %}
                         </a>
                     </div>
                 </div>

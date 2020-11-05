@@ -145,19 +145,6 @@ a, a:hover {
     text-decoration: none;
 }
 
-.gray {
-    color: gray;
-    font-weight: normal;
-}
-
-.like {
-    color: blue;
-}
-
-.dislike {
-    color: rgb(255, 81, 0);
-}
-
 .bold {
     font-weight: 1.2em;
 }
@@ -222,6 +209,14 @@ a, a:hover {
 
 .comment-reactions .btn {
     min-width: auto !important;
+}
+
+.dropdown-toggle {
+    min-width: auto !important;
+}
+
+.dropdown-menu {
+    transform: translate3d(-165px, -9px, 0px) !important;
 }
 
 .comment-time {
