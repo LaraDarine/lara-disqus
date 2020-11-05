@@ -211,6 +211,9 @@ a, a:hover {
 
 .dropdown-menu {
     transform: translate3d(-165px, -9px, 0px) !important;
+    top: 17px !important;
+    left: 17px !important;
+    background-color: #fff !important;
 }
 
 .comment-time {
