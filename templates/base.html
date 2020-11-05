@@ -36,7 +36,9 @@
                 <div class="my-2 pr-4 my-lg-0">
                     {% if user.is_authenticated %}
                     
-                    <img class="profile-img" src="{{ user.profile.picture.url }}" alt="{{ user.username  | capfirst }}">
+                    <a href="#">
+                        <img class="profile-img" src="{{ user.profile.picture.url }}" alt="{{ user.username  | capfirst }}">
+                    </a>
                     
                     <a href="{% url 'logout' %}" class="btn btn-primary my-2 my-sm-0" type="submit">Logout</a>
                     {% else %}
