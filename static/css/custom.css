@@ -165,7 +165,7 @@ a, a:hover {
 }
 
 /* Disscussion details styles */
-#discuss-container .card-footer {
+.card-footer {
     background-color: transparent;
 }
 
