@@ -3,11 +3,24 @@
 {% block title %}Email confirmation{% endblock %}
 
 {% block content %}
-    <section>
-        <div>
-            <h1">Cool {{ user.username  | capfirst }}!</h1>
-            <div>Confirmation email sent to {{ user.email }}, check it out!</div>
-            <a href="{% url 'login' %}">Home</a>
+<section class='container mx-auto my-4'>
+    <div class="card mb-3 border-0">
+        <div class="row no-gutters">
+            <div class="col-md-6">
+                <img src="/static/images/auth-user.png" class="card-img mx-auto d-block" alt="welcome">
+            </div>
+            <div class="col-md-6">
+                <div class="card-body pl-md-0 py-4 my-md-5">
+                    <h5 class="card-title">Cool {{ user.username  | capfirst }}</h5>
+                    <div class="card-text py-3">
+                        <p>Confirmation email sent to {{ user.email }}, check it out!</p>
+                    </div>
+                    <div class="card-footer mt-1">
+                        <a href="{% url 'login' %}" class="card-link btn btn-secondary float-right">Login</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock %}
