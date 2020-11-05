@@ -6,6 +6,7 @@ Coretabs contest 2020
 * Django crispy forms
 ### Front-end
 * Boostrap
+* jQuery
 * FontAwesome
 
 ### Images
