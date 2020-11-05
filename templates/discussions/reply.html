@@ -23,12 +23,12 @@
                         {{ reply.created_at|naturaltime  }}</div>
                     <div>
                         {% if current_user in reply.likes.all %}
-                        <a class="like btn btn-sm"
+                        <a class="text-primary"
                             href="{% url 'toggle_comment_like' pk=reply.id %}">
                             Liked
                         </a>
                         {% else %}
-                        <a class="gray btn btn-sm"
+                        <a class="text-muted"
                             href="{% url 'toggle_comment_like' pk=reply.id %}">
                             Like
                         </a>
@@ -36,12 +36,12 @@
                     </div>
                     <div>
                         {% if current_user in reply.dislikes.all %}
-                        <a class="dislike btn btn-sm"
+                        <a class="text-secondary"
                             href="{% url 'toggle_comment_dislike' pk=reply.id %}">
                             Disliked
                         </a>
                         {% else %}
-                        <a class="gray btn btn-sm"
+                        <a class="text-muted"
                             href="{% url 'toggle_comment_dislike' pk=reply.id %}">
                             Dislike
                         </a>
@@ -49,9 +49,8 @@
                     </div>
                     <div class="comment-crud">
                         {% if current_user == reply.author %}
-                        <a href="{% url 'edit_comment' pk=reply.id %}" class="btn btn-sm">Edit</a>
-                        <a href="{% url 'delete_comment' pk=reply.id %}"
-                            class="btn btn-sm">Delete</a>
+                        <a href="{% url 'edit_comment' pk=reply.id %}" class="text-muted">Edit</a>
+                        <a href="{% url 'delete_comment' pk=reply.id %}" class="text-muted">Delete</a>
                         {% endif %}
                     </div>
                     <div id="comment-stats" class="d-flex">

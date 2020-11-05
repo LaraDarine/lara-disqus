@@ -31,7 +31,7 @@
                         Liked
                     </a>
                     {% else %}
-                    <a class="gray" href="{% url 'toggle_like' pk=discussion.id %}">
+                    <a class="text-muted" href="{% url 'toggle_like' pk=discussion.id %}">
                         <i class="far fa-thumbs-up"></i>
                         Like
                     </a>
@@ -44,7 +44,7 @@
                         Disliked
                     </a>
                     {% else %}
-                    <a class="gray" href="{% url 'toggle_dislike' pk=discussion.id %}">
+                    <a class="text-muted" href="{% url 'toggle_dislike' pk=discussion.id %}">
                         <i class="far fa-thumbs-down"></i>
                         Dislike
                     </a>
