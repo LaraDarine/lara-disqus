@@ -6,7 +6,6 @@ from .models import Discussion
 
 User = get_user_model()
 
-
 class DiscussionForm(UserCreationForm):
 
     class Meta:
