@@ -9,6 +9,7 @@ User = get_user_model()
 
 class CommentForm(forms.ModelForm):
     content = forms.CharField(
+        max_length=250,
         label='',
         widget=forms.TextInput(
             attrs={
