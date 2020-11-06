@@ -14,6 +14,10 @@
                     <h5 class="card-title">Cool {{ user.username  | capfirst }}</h5>
                     <div class="card-text py-3">
                         <p>Confirmation email sent to {{ user.email }}, check it out!</p>
+                        <p>
+                            <span class="text-secondary">PS: </span>
+                            Verify your spams if you don't see any message coming
+                        </p>
                     </div>
                     <div class="card-footer mt-1">
                         <a href="{% url 'login' %}" class="card-link btn btn-secondary float-right">Login</a>
