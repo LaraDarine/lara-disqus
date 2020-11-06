@@ -13,9 +13,9 @@ else:
 
 ALLOWED_HOSTS = ['.herokuapp.com']
 
-DATABASES = {
+""" DATABASES = {
     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-}
+} """
 
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 
