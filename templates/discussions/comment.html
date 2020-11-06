@@ -6,7 +6,7 @@
             <img src="{{ comment.author.profile.picture.url}}" alt="{{ comment.author}}"
                 class="profile-img">
             <div class="w-100 pt-2 pl-2 ml-2 bg-light comment-container">
-                <a href="#" class="text-dark font-weight-bold">{{ comment.author}}</a>
+                <a href="#" class="text-dark font-weight-bold">{{ comment.author|capfirst}}</a>
                 <span class="my-2 d-block">
                     {{ comment.content }}
                 </span>

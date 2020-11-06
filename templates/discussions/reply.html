@@ -4,7 +4,7 @@
             <img src="{{ reply.author.profile.picture.url}}" alt="{{ reply.author}}"
                 class="reply-profile-img">
             <div class="w-100 pt-2 ml-2 pl-2 bg-reply comment-container">
-                <a href="#" class="text-dark font-weight-bold">{{ reply.author}}</a>
+                <a href="#" class="text-dark font-weight-bold">{{ reply.author|capfirst}}</a>
                 <span class="my-2 d-block">
                     {{ reply.content }}
                 </span>
