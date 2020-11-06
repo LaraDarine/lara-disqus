@@ -1,0 +1,1 @@
+web: gunicorn lara_disqus.wsgi
