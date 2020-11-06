@@ -184,6 +184,11 @@ a, a:hover {
     color: #878787;
 }
 
+#div_id_image label {
+    cursor: pointer !important;
+}
+
+
 #div_id_content input {
     margin: 2px 12px;
     height: 52px;
